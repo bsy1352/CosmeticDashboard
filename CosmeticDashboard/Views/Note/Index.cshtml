@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "게시판";
+}
+
+
+<h2>게시판</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var note in Model)
+        {
+        <tr>
+            <td>@note.NoteNo</td>
+            <td><a asp-controller="Note" asp-action="ViewBoard" asp-route-UserNo="@note.NoteNo">@note.NoteTitle</a></td> 
+            <td>@note.User.UserName</td>
+            <td>@note.NoteDate</td>
+        </tr>
+        }
+    </tbody>
+</table>
+<hr />
+@{ 
+    var prevDisabled = !Model.PreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.NextPage ? "disabled" : "";
+}
+<a asp-action="Index"
+   asp-route-pageNumber="@(Model.PageIndex-1)"
+   class="btn btn-secondary @prevDisabled">
+    Previous
+</a>
+<a asp-action="Index"
+   asp-route-pageNumber="@(Model.PageIndex+1)"
+   class="btn btn-secondary @nextDisabled">
+    Next
+</a>
+<br />
+<br />
+<br />
+<a class="btn btn-warning" asp-controller="Note" asp-action="Add">게시물 작성</a>

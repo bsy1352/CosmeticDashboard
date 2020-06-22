@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "보기";
+}
+@model CosmeticDashboard.Models.Note
+
+@if (Model.User.isEditable.Equals(true))
+{
+    <h2>게시물 수정</h2>
+
+    <div class="row" style="margin-top: 50px">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <form method="post" asp-controller="Note" asp-action="Add">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <label>제목</label>
+                    <input type="text" class="form-control" asp-for="NoteTitle" value="@Model.NoteTitle" style="margin-top:5px" />
+                </div>
+                <div class="form-group">
+                    <textarea name="ContentsTextArea" class="form-control" asp-for="NoteContents">@Model.NoteContents</textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" asp-controller="Note" asp-action="Edit" class="btn btn-primary">수정</button>
+                    <a class="btn btn-secondary" asp-controller="Note" asp-action="Index">뒤로</a>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+else
+{
+    <h2>게시물 보기</h2>
+
+    <div class="row" style="margin-top: 50px">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
+            <form method="post" asp-controller="Note" asp-action="Add">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <div class="form-group">
+                    <label>제목</label>
+                    <input type="text" class="form-control" asp-for="NoteTitle" value="@Model.NoteTitle" disabled="disabled" style="margin-top:5px" />
+                </div>
+                <div class="form-group">
+                    <textarea name="ContentsTextArea" class="form-control" asp-for="NoteContents" disabled="disabled">@Model.NoteContents</textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" asp-controller="Note" asp-action="ViewBoard" class="btn btn-primary">수정</button>
+                    <a class="btn btn-secondary" asp-controller="Note" asp-action="Index">뒤로</a>
+                </div>
+            </form>
+        </div>
+    </div>
+}
+
+

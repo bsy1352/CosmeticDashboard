@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "게시물 수정";
+}
+@model CosmeticDashboard.Models.Note
+
+<h2>게시물 수정</h2>
+
+<div class="row" style="margin-top: 50px">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <form method="post" asp-controller="Note" asp-action="Add">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="form-group">
+                <label>제목</label>
+                <input type="text" class="form-control" asp-for="NoteTitle" style="margin-top:5px" placeholder="제목 입력" />
+                <span class="text-danger" asp-validation-for="NoteTitle"></span>
+            </div>
+            <div class="form-group">
+                <textarea name="ContentsTextArea" class="form-control" asp-for="NoteContents" placeholder="내용 입력"></textarea>
+                <span class="text-danger" asp-validation-for="NoteContents"></span>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">저장</button>
+                <a class="btn btn-secondary" asp-controller="Note" asp-action="Index">취소</a>
+            </div>
+        </form>
+    </div>
+</div>

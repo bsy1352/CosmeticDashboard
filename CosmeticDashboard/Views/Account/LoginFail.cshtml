@@ -1,0 +1,43 @@
+﻿@*<script type="text/javascript">
+
+        //$(function () {
+        //    var PlaceHolderElement = $('#PlaceHolderHere')
+        //    $('button').click(function () {
+
+        //        var url = $(this).data('url');
+        //        $.get(url).done(function (data) {
+        //            PlaceHolderElement.html(data);
+        //            PlaceHolderElement.find('.modal').modal('show');
+        //        });
+        //    });
+        //});
+
+
+    </script>*@
+
+<div class="container">
+    <div class="modal fade" tabindex="-1" id="LoginFailed"
+         data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">로그인 실패</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <p> 아이디 혹은 비밀번호가 틀립니다.</p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnHideModal" class="close" data-dismiss="modal">
+                        닫기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>

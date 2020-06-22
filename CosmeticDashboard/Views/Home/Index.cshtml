@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+@if(TempData.ContainsKey("NoRight") && TempData["NoRight"].ToString() == "접근권한없음") 
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#NoRight").modal('show');
+        });
+    </script>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div class="container">
+    <div class="modal fade" tabindex="-1" id="NoRight"
+         data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">접근 불가</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <p> 접근 권한이 없습니다. </p>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnHideModal" class="close" data-dismiss="modal">
+                        닫기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
