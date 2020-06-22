@@ -2,20 +2,17 @@
     ViewData["Title"] = "로그인";
 }
 @model CosmeticDashboard.ViewModel.LoginViewModel
+@using Microsoft.AspNetCore.Mvc
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 
 
-@*@if (ViewData.ModelState.ContainsKey("LoginFailure") && ViewData.ModelState["LoginFailure"].Errors.Count > 0)
-    {
-    <script type="text/javascript">
 
-        $(document).ready(function () {
-            $("#loginFail").modal('show');
-        });
-    </script>
-        ViewData.ModelState["LoginFailure"].Errors.Clear();
-    }*@
+<div class="modal fade" id="myModal" role="dialog" data-url="@Url.Action("LoginFail")"></div>
 
-<div id="PlaceHolderHere"></div>
+
 
 <h2>로그인</h2>
 
@@ -32,12 +29,26 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" data-toggle="ajax-modal" data-url="@Url.Action("Login")" data-target="#LoginFailed" class="btn btn-success">로그인</button>
+        <button type="submit" id="trylogin" class="btn btn-success">로그인</button>
     </div>
 </form>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#trylogin").click(function () {
+
+            var url = $("#myModal").data('url');
+            $.get(url, function (data) {
+                $("#myModal").html(data);
+                $("#myModal").modal('show');
+            });
+        });
+    });
+</script>
+
+
+
 
 @*<div class="container">
         <div class="modal fade" tabindex="-1" id="loginFail"

@@ -66,7 +66,7 @@ namespace CosmeticDashboard.Controllers
                 }
 
                 ModelState.AddModelError("LoginFailure", "로그인에 실패하였습니다.");
-                return PartialView("LoginFail", model);
+                
             }
 
             return View(model);
@@ -107,6 +107,13 @@ namespace CosmeticDashboard.Controllers
             }
 
             return View(model);
+        }
+
+        
+        public IActionResult LoginFail()
+        {
+
+            return PartialView();
         }
     }
 }
