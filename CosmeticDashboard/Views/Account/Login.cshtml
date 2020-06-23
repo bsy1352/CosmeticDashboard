@@ -5,19 +5,14 @@
 @using Microsoft.AspNetCore.Mvc
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 
 
-
-<div class="modal fade" id="myModal" role="dialog" data-url="@Url.Action("LoginFail")"></div>
-
-
+<div class="modal fade" id="myModal" role="dialog"></div>
 
 <h2>로그인</h2>
 
-<form method="post" asp-controller="Account" asp-action="Login">
-
+<form method="post" asp-controller="Account" asp-action="Login" data-ajax-url="/Account/Login" data-ajax="true" data-ajax-method="post">
+    
     <div class="form-group">
         <label>사용자 ID       </label><span class="text-danger" asp-validation-for="UserId"></span>
         <input type="text" asp-for="UserId" class="form-control" placeholder="사용자 ID 입력" autocomplete="off" />
@@ -29,29 +24,68 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" id="trylogin" class="btn btn-success">로그인</button>
+        <button type="submit" id="submitbutton" class="btn btn-success">로그인</button>
     </div>
 </form>
 
+@section scripts{
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        @*//$("#myModal").load('@Url.Action("LoginFailure", "Account")');
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#trylogin").click(function () {
 
-            var url = $("#myModal").data('url');
-            $.get(url, function (data) {
-                $("#myModal").html(data);
-                $("#myModal").modal('show');
+        $.get("@Url.Action("LoginFailure", "Account")", function (data) {
+            $("#myModal").html(data);
+        });*@
+       
+        //$(document).ready(function () {
+
+        //    $("#myModal").modal('show');
+                
+
+        ////        $(document).on('click', '#btnHideModal', function () {
+        ////            $("#myModal").modal('hide');
+        ////        });
+
+            
+
+            
+        //});
+
+        $('form').submit(function (e) {
+            e.preventDefault();
+                $.ajax({
+                    url: '/Account/LoginFailure',
+                    type: 'GET',
+                    async: true,
+                    dataType: "html"
+                })
+                    .done(function (result) {
+                        $('#myModal').html(result);
+                        $('#myModal').attr(result);
+                    });
+
+                $.ajax({
+                    url: '/Account/Login',
+                    type: 'POST',
+                    async: false,
+                })
+                    .done(function (result) {
+                        $('#myModal').modal('show');
+
+                        $('#myModal').find("btnHideModal").click(function () {
+                            $('#myModal').modal('hide');
+
+                        });
+                        
+                    });
             });
-        });
-    });
-</script>
 
-
-
+    </script>
+}
 
 @*<div class="container">
-        <div class="modal fade" tabindex="-1" id="loginFail"
+        <div class="modal fade" tabindex="-1" id="LoginFailure"
              data-keyboard="false" data-backdrop="static">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -61,12 +95,12 @@
                     <div class="modal-body">
                         <form>
                             <div class="form-group">
-                                <p> 아이디 혹은 비밀번호가 틀립니다.</p>
+                                <p>아이디 혹은 비밀번호를 잘못 입력하셨습니다. </p>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="btnHideModal" class="close" data-dismiss="modal">
+                        <button type="button" id="btnHideModal" class="btn btn-primary button button4">
                             닫기
                         </button>
                     </div>
@@ -74,3 +108,46 @@
             </div>
         </div>
     </div>*@
+
+@*<script type="text/javascript">
+
+            $(document).ready(function () {
+                $.ajax({
+                url: '@Url.Action("LoginFailure", "Account")',
+                type: 'get',
+                success: function (data) {
+                    $('div#myModal').html(data);
+                    }
+                });
+            });
+    </script>*@
+
+@*@if (TempData.ContainsKey("LoginFailure") && TempData["LoginFailure"].ToString() == "로그인실패")
+    {
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $("#LoginFailure").modal('show');
+            });
+
+            $("#btnHideModal").click(function () {
+                $("#LoginFailure").modal('hide');
+            });
+        </script>
+    }*@
+
+
+
+@*@if (TempData.ContainsKey("LoginFailure") && TempData["LoginFailure"].ToString() == "로그인실패")
+    {
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $("#LoginFailure").modal('show');
+            });
+
+            $("#btnHideModal").click(function () {
+                $("#LoginFailure").modal('hide');
+            });
+        </script>
+    }*@

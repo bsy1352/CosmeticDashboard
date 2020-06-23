@@ -5,15 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
-@if(TempData.ContainsKey("NoRight") && TempData["NoRight"].ToString() == "접근권한없음") 
-{
-    <script type="text/javascript">
 
-        $(document).ready(function () {
-            $("#NoRight").modal('show');
-        });
-    </script>
-}
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -36,7 +28,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="btnHideModal" class="close" data-dismiss="modal">
+                    <button type="button" id="btnHideModal" class="btn btn-primary button button4">
                         닫기
                     </button>
                 </div>
@@ -44,3 +36,22 @@
         </div>
     </div>
 </div>
+
+
+
+
+@if (TempData.ContainsKey("NoRight") && TempData["NoRight"].ToString() == "접근권한없음")
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#NoRight").modal('show');
+
+            $(document).on('click', '#btnHideModal', function () {
+                $("#NoRight").modal('hide');
+            });
+        });
+
+        
+    </script>
+}

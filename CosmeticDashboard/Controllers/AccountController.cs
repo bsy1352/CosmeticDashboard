@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using CosmeticDashboard.DataContext;
 using CosmeticDashboard.Models;
 using CosmeticDashboard.ViewModel;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Headers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace CosmeticDashboard.Controllers
@@ -65,8 +68,10 @@ namespace CosmeticDashboard.Controllers
                     
                 }
 
-                ModelState.AddModelError("LoginFailure", "로그인에 실패하였습니다.");
-                
+                TempData["LoginFailure"] = "로그인실패";
+                RequestHeaders header = Request.GetTypedHeaders();
+                return new PartialViewResult();
+                //return View(model);
             }
 
             return View(model);
@@ -109,8 +114,8 @@ namespace CosmeticDashboard.Controllers
             return View(model);
         }
 
-        
-        public IActionResult LoginFail()
+     
+        public async Task<PartialViewResult> LoginFailure()
         {
 
             return PartialView();
