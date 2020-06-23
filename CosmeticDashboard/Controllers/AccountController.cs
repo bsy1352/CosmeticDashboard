@@ -68,10 +68,10 @@ namespace CosmeticDashboard.Controllers
                     
                 }
 
-                TempData["LoginFailure"] = "로그인실패";
-                RequestHeaders header = Request.GetTypedHeaders();
-                return new PartialViewResult();
-                //return View(model);
+                //TempData["LoginFailure"] = "로그인실패";
+                //RequestHeaders header = Request.GetTypedHeaders();
+                //return new PartialViewResult();
+                return View(model);
             }
 
             return View(model);

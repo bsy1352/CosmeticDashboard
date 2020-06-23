@@ -31,8 +31,7 @@ namespace CosmeticDashboard.Controllers
 
             if (HttpContext.Session.GetString("USER_LOGIN_ID") == null)
             {
-                TempData["NoRight"] = "접근권한없음";
-               
+                               
                 return Redirect(header.Referer.ToString());
                 
             }

@@ -48,35 +48,33 @@
         ////        });
 
             
+        $(document).ready(function () {
+            
+            $.ajax({
+                url: '/Account/LoginFailure',
+                type: 'GET',
+                async: false,
+                dataType: "html"
+            })
+                .done(function (result) {
+                    $('#myModal').html(result);
+
+                });
 
             
-        //});
+        });
 
         $('form').submit(function (e) {
             e.preventDefault();
                 $.ajax({
-                    url: '/Account/LoginFailure',
-                    type: 'GET',
-                    async: true,
-                    dataType: "html"
-                })
-                    .done(function (result) {
-                        $('#myModal').html(result);
-                        $('#myModal').attr(result);
-                    });
-
-                $.ajax({
                     url: '/Account/Login',
                     type: 'POST',
                     async: false,
+                    dataType: "html",
                 })
-                    .done(function (result) {
+                    .done(function () {
+                       
                         $('#myModal').modal('show');
-
-                        $('#myModal').find("btnHideModal").click(function () {
-                            $('#myModal').modal('hide');
-
-                        });
                         
                     });
             });
