@@ -7,51 +7,7 @@
 
 
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center" style="top: 50%; left: 40%; position: fixed;">
+    <h1 class="display-4" style="color:whitesmoke">Welcome</h1>
+    <p style="color:whitesmoke">Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
-
-<div class="container">
-    <div class="modal fade" tabindex="-1" id="NoRight"
-         data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">접근 불가</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <p> 접근 권한이 없습니다. </p>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="btnHideModal" class="btn btn-primary button button4">
-                        닫기
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
-@if (TempData.ContainsKey("NoRight") && TempData["NoRight"].ToString() == "접근권한없음")
-{
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            $("#NoRight").modal('show');
-
-            $(document).on('click', '#btnHideModal', function () {
-                $("#NoRight").modal('hide');
-            });
-        });
-
-        
-    </script>
-}

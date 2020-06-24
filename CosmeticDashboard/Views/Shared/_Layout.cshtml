@@ -7,52 +7,70 @@
     <title>@ViewData["Title"] - CosmeticDashboard</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <style type='text/css'>
+        /* This style should explicitly set your navbar to a certain height */
+        #navMain{
+            min-height: 70px;
+            max-height: 70px;
+            height: 70px;
+        }
+
+        #navSub {
+            min-height: 28px;
+            max-height: 28px;
+            height: 28px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">맞춤형 화장품</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Note" asp-action="Index" id="test">게시판</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav ml-auto">
-                        @if (Context.Session.GetInt32("USER_LOGIN_KEY") == null)
-                        {
+        <nav id="navSub" class="navbar navbar-expand-xl navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
 
+        </nav>
+            <nav id="navMain" class="navbar navbar-expand-xl navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+                <div class="container">
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/Logo/granco 로고 png.png" width="100"></a>
+                    <a class="navbar-brand">맞춤형 화장품</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row">
+                        <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">로그인</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Note" asp-action="Index" id="test">게시판</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">회원가입</a>
-                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav ml-auto">
+                            @if (Context.Session.GetInt32("USER_LOGIN_KEY") == null)
+                            {
 
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">로그아웃</a>
-                            </li>
-                        }
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LoginPage">로그인</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">회원가입</a>
+                                </li>
 
-                    </ul>
+                            }
+                            else
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">로그아웃</a>
+                                </li>
+                            }
+
+                        </ul>
+
+                    </div>
+
 
                 </div>
 
-
-            </div>
-
-        </nav>
+            </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+    <div>
+        <main role="main">
             @RenderBody()
         </main>
     </div>
@@ -61,15 +79,14 @@
         <div class="container">
             &copy; 2020 - CosmeticDashboard - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
+        
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
-
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @RenderSection("Scripts", required: false)
+    @RenderSection("Scripts", false)
 </body>
 </html>

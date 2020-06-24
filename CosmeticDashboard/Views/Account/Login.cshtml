@@ -11,8 +11,8 @@
 
 <h2>로그인</h2>
 
-<form method="post" asp-controller="Account" asp-action="Login" data-ajax-url="/Account/Login" data-ajax="true" data-ajax-method="post">
-    
+<form method="post" asp-controller="Account" asp-action="Login">
+
     <div class="form-group">
         <label>사용자 ID       </label><span class="text-danger" asp-validation-for="UserId"></span>
         <input type="text" asp-for="UserId" class="form-control" placeholder="사용자 ID 입력" autocomplete="off" />
@@ -37,47 +37,49 @@
         $.get("@Url.Action("LoginFailure", "Account")", function (data) {
             $("#myModal").html(data);
         });*@
-       
+
         //$(document).ready(function () {
 
         //    $("#myModal").modal('show');
-                
+
 
         ////        $(document).on('click', '#btnHideModal', function () {
         ////            $("#myModal").modal('hide');
         ////        });
 
-            
         $(document).ready(function () {
-            
+
             $.ajax({
                 url: '/Account/LoginFailure',
                 type: 'GET',
-                async: false,
+                async: true,
                 dataType: "html"
             })
                 .done(function (result) {
                     $('#myModal').html(result);
-
+                    var tempdataval = '@TempData["LoginFailure"]';
+                    if (tempdataval != null && tempdataval != '') {
+                        $('#myModal').modal('show');
+                    }
                 });
 
-            
         });
 
-        $('form').submit(function (e) {
-            e.preventDefault();
-                $.ajax({
-                    url: '/Account/Login',
-                    type: 'POST',
-                    async: false,
-                    dataType: "html",
-                })
-                    .done(function () {
-                       
-                        $('#myModal').modal('show');
-                        
-                    });
-            });
+
+        $('button').click(function () {
+            $.ajax({
+                url: '/Account/Login',
+                type: 'POST',
+                async: true,
+            })
+                .done(function (data) {
+
+                });
+        });
+
+
+
+
 
     </script>
 }

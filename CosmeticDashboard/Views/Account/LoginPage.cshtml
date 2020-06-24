@@ -1,0 +1,85 @@
+﻿@model CosmeticDashboard.ViewModel.LoginViewModel
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="~/css/LoginStyleSheet.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+
+
+<div class="modal fade" id="myModal" role="dialog"></div>
+
+<div class="MainDiv">
+    <form method="post" asp-action="LoginPage" asp-controller="Account" class="login-form">
+
+        <h1>로그인</h1>
+
+        <div class="txtb">
+            <input type="text"asp-for="UserId"/>
+            <span data-placeholder="Username" id="span"></span>
+        </div>
+
+        <div class="txtb">
+            <input type="password" asp-for="UserPassword"/>
+            <span data-placeholder="Password"></span>
+        </div>
+
+        <input type="submit" class="logbtn" value="로그인" />
+
+        <div class="bottom-text">
+            아직 계정이 없으신가요? <a asp-controller="Account" asp-action="Register">회원가입</a>
+        </div>
+
+    </form>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+
+    $("input").on("focus", function () {
+        $(this).addClass("focus");
+    });
+
+    $("input").on("blur", function () {
+        if ($(this).val() == "") {
+            $(this).removeClass("focus");
+        }
+
+    });
+
+    $(document).ready(function () {
+
+            $.ajax({
+                url: '/Account/LoginFailure',
+                type: 'GET',
+                async: true,
+                dataType: "html"
+            })
+                .done(function (result) {
+                    $('#myModal').html(result);
+                    var tempdataval = '@TempData["LoginFailure"]';
+                    if (tempdataval != null && tempdataval != '') {
+                        $('#myModal').modal('show');
+                    }
+                });
+
+        });
+
+
+        $('button').click(function () {
+            $.ajax({
+                url: '/Account/Login',
+                type: 'POST',
+                async: true,
+            })
+                .done(function (data) {
+
+                });
+        });
+
+
+
+</script>
+
+
