@@ -108,12 +108,21 @@ namespace CosmeticDashboard.Controllers
         }
 
         [HttpPost]
-        public IActionResult isDuplicated(Test test)
+        public async Task<IActionResult> isDuplicated([FromBody]Test user)
         {
-            Console.WriteLine(test.data);
-            Console.WriteLine(test.foo);
-            Console.WriteLine(test.fooz);
-            return View();
+            DupResult dr = new DupResult();
+            
+            var userID = await _db.Users
+                   .FirstOrDefaultAsync(u => u.UserId.Equals(user.ID));
+            if(userID != null)
+            {
+                dr.isDup = 1;
+                return Json(dr);
+            }
+            dr.isDup = 0;
+            return Json(dr);
         }
+
+       
     }
 }

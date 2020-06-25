@@ -5,9 +5,8 @@ using System.Threading.Tasks;
 
 namespace CosmeticDashboard.Models
 {
-    public class Test
+    public class DupResult
     {
-        public string ID { get; set; }
-       
+        public int isDup { get; set; }
     }
 }

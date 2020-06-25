@@ -14,10 +14,9 @@
                     <div class="form-row align-items-center">
                         <label>사용자 ID  <span asp-validation-for="UserId" class="text-danger"></span></label>
                         <input type="text" class="form-control" id="id_input" asp-for="UserId" placeholder="Username" autocomplete="off" />
-                        <button type="submit" id="idChkBtn" class="btn btn-primary" onclick="submitForm()" style="margin-left:10px">중복확인</button>
-                        <div id="checkMsg">
-                            
-                        </div>
+                        <button id="idChkBtn" class="btn btn-primary" onclick="submitForm()" style="margin-left:10px">중복확인</button>
+                        <div id="checkMsg"></div>
+                        
                     </div>
                 </div>
                 <div class="input_field">
@@ -116,26 +115,43 @@
 <script src="~/js/Registration.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/javascript">
-    @{
-        string asp = "";
-    }
-
 
     function submitForm() {
-
-        
-
+        event.preventDefault();
         $.ajax({
-        type: 'POST',
-        url: '@Url.Action("isDuplicated","Account")',
-        contentType: "application/json; charset=utf-8",
-        data: { data: $("#id_input").val(), foo: $("#id_input").val(), fooz: $("#id_input").val()},   //<-- mind the array here
-        dataType: 'json',
-        success: function (result) {
-                     alert("We returned: " + result);
-                  }
-        })
-}
+            url: '@Url.Action("isDuplicated","Account")',
+            dataType: "json",
+            type: "Post",
+            contentType: 'application/json',
+            data: JSON.stringify({ ID: $('#id_input').val()}),
+            async: false,
+            processData: false,
+            cache: false,
+            success: function (data) {
+                if (data.isDup == 0) {
+                    
+                    $('#checkMsg').html('<img src="~/Icons/confirmed.png" width="30" height="30" style="margin-left:20px"/>');
+                }
+                else {
+                    $('#checkMsg').html('<p style="color:red; margin-left:20px; font-weight:800">사용불가능</p>');
+                }
+            },
+            error: function (xhr) {
+                alert('error');
+            }
+            //success: function (data) {
+            //    alert(data);
+            //    //if (result.isDup == 1) {
+            //    //    $('#checkMsg').html('<img src="~/Icons/confirmed.png" width="30" height="30" style="margin-left:20px"/>');
+            //    //}
+            //    //else {
+            //    //    $('#checkMsg').html('<p style="color:red; margin-left:20px; font-weight:800">사용불가능</p>');
+            //    //}
+            //}
+        });
+        
+    }
+
 
 
 </script>
