@@ -1,1 +1,142 @@
-﻿
+﻿@model CosmeticDashboard.Models.User
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="~/css/Registration.css" />
+
+<div class="container-fluid">
+    <div class="wrapper">
+        <div class="title">
+            회원가입
+        </div>
+        <form method="post" asp-controller="Account" asp-action="Registration">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div class="form-group form">
+                <div class="input_field">
+                    <div class="form-row align-items-center">
+                        <label>사용자 ID  <span asp-validation-for="UserId" class="text-danger"></span></label>
+                        <input type="text" class="form-control" id="id_input" asp-for="UserId" placeholder="Username" autocomplete="off" />
+                        <button type="submit" id="idChkBtn" class="btn btn-primary" onclick="submitForm()" style="margin-left:10px">중복확인</button>
+                        <div id="checkMsg">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <div class="form-row align-items-center">
+                        <label>사용자 PW  <span asp-validation-for="UserId" class="text-danger"></span></label>
+                        <input type="password" class="form-control" id="pw_input" asp-for="UserId" placeholder="Password" autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <div class="form-row align-items-center">
+                        <label>비밀번호 확인  <span asp-validation-for="UserId" class="text-danger"></span></label>
+                        <input type="password" class="form-control" id="pwConfirm_input" asp-for="UserId" placeholder="Confirm Your Password" autocomplete="off"/>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <div class="form-row align-items-center">
+                        <label>성별<span asp-validation-for="UserId" class="text-danger"></span></label>
+                        <div>
+                            <select class="custom-select" autocomplete="off">
+                                <option value="">선택</option>
+                                <option value="Male">남자</option>
+                                <option value="Female">여자</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <div class="form-row align-items-center">
+                        <div>
+                            <label>이메일<span asp-validation-for="UserId" class="text-danger"></span></label>
+                        </div>
+                        <div>
+                            <input type="text" class="form-control" id="inlineFormInputName" placeholder="ID" autocomplete="off" />
+                        </div>
+                        <div>
+                            <div class="input-group">
+                                <div class="input-group-prepend" style="margin-left:3px">
+                                    <div class="input-group-text">@@</div>
+                                </div>
+                                <div>
+                                    <input type="text" class="form-control" id="emails" autocomplete="off"/>
+                                </div>
+                                <select class="custom-select" name="travel_arriveVia" id="chosenSelect" onchange="myFunction(event)">
+                                    <option value="Other">직접입력</option>
+                                    <option value="gmail.com">gmail.com</option>
+                                    <option value="naver.com">naver.com</option>
+                                    <option value="hanmail.net">hanmail.net</option>
+                                    <option value="nate.com">nate.com</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <div class="form-row align-items-center">
+                        <label>휴대폰번호  <span asp-validation-for="UserId" class="text-danger"></span></label>
+                        <div class="col-2">
+                            <select style="width:70px" class="custom-select">
+                                <option value="">선택</option>
+                                <option value="010">010</option>
+                                <option value="011">011</option>
+                                <option value="016">016</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" style="width:70px" class="form-control" autocomplete="off">
+                        </div>
+                        <div class="col-2">
+                            <input type="text" style="width:70px" class="form-control" autocomplete="off">
+                        </div>
+                        <div class="col-1">
+                            <button id="Authentication" class="btn btn-secondary" style="width:120px" onclick="tryAuth">인증번호발송</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="input_field">
+                    <div class="form-row align-items-center">
+                        <label>주소</label>
+                        <input type="text" class="form-control" id="postcode" readonly='readonly' placeholder="우편번호" />
+                        <input type="button" style="margin-left:10px" onclick="execDaumPostcode()" class="btn btn-secondary" value="우편번호 찾기" />
+                        <input type="text" class="form-control" id="roadAddress" readonly='readonly' placeholder="도로명주소" />
+                        <input type="text" class="form-control" id="jibunAddress" readonly='readonly' placeholder="지번주소" />
+                        <span id="guide" style="color:#999;display:none"></span><br />
+                        <input type="text" class="form-control" id="detailAddress" placeholder="상세주소" autocomplete="off" />
+                        <input type="text" class="form-control" id="extraAddress" readonly='readonly' placeholder="참고항목" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success">완료</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@*다음 카카오 주소API*@
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="~/js/Registration.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+    @{
+        string asp = "";
+    }
+
+
+    function submitForm() {
+
+        
+
+        $.ajax({
+        type: 'POST',
+        url: '@Url.Action("isDuplicated","Account")',
+        contentType: "application/json; charset=utf-8",
+        data: { data: $("#id_input").val(), foo: $("#id_input").val(), fooz: $("#id_input").val()},   //<-- mind the array here
+        dataType: 'json',
+        success: function (result) {
+                     alert("We returned: " + result);
+                  }
+        })
+}
+
+
+</script>
+
