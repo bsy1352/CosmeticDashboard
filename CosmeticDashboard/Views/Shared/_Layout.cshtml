@@ -7,6 +7,7 @@
     <title>@ViewData["Title"] - CosmeticDashboard</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/SlideSidebar.css"/>
     <style type='text/css'>
         /* This style should explicitly set your navbar to a certain height */
         #navMain{
@@ -20,38 +21,55 @@
             max-height: 28px;
             height: 28px;
         }
+
     </style>
 </head>
 <body>
-    <header>
-        <nav id="navSub" class="navbar navbar-expand-xl navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
-
-        </nav>
-            <nav id="navMain" class="navbar navbar-expand-xl navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+    <div class="d-block d-md-none d-lg-none slidediv" id="slidediv" style="z-index:8; position:absolute; margin-left:7px; margin-top:13px">
+        <input type="checkbox" id="menuicon">
+        <label for="menuicon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <div class="sidebar">
+            <header>메뉴</header>
+            <ul>
+                <li><a asp-area="" asp-controller="Account" asp-action="LoginPage"><i class="fas fa-qrcode"></i>로그인</a></li>
+                <li><a asp-area="" asp-controller="Account" asp-action="Registration"><i class="fas fa-stream"></i>회원가입</a></li>
+                <li><a asp-area="" asp-controller="Note" asp-action="Index"><i class="fas fa-link"></i>게시판</a></li>
+                <li><a ><i class="fas fa-question-circle"></i>고객서비스</a></li>
+                <li><a ><i class="fas fa-envelope"></i>환경설정</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="overlay">
+        <header>
+            <nav id="navSub" class="navbar navbar-expand-xl navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow d-none d-sm-block">
+            </nav>
+            <nav id="navMain" style="z-index:3" class="navbar sticky-top navbar-expand-xl navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
                 <div class="container">
-                    <a class="navbar-brand" asp-controller="Home" asp-action="Index"><img src="~/Logo/granco 로고 png.png" width="100"></a>
-                    <a class="navbar-brand">맞춤형 화장품</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row">
+                    <a class="navbar-brand logo" asp-controller="Home" asp-action="Index"><img src="~/Logo/granco 로고 png.png" width="140"></a>
+                    <a class="navbar-brand d-none d-sm-block d-md-block">맞춤형 화장품</a>
+                    @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>*@
+                    <div class="navbar-collapse collapse d-md-inline-flex flex-md-row">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Note" asp-action="Index" id="test">게시판</a>
                             </li>
                         </ul>
-                        <ul class="nav navbar-nav ml-auto">
+                        <ul class="nav navbar-nav ml-md-auto">
                             @if (Context.Session.GetInt32("USER_LOGIN_KEY") == null)
                             {
-
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="LoginPage">로그인</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Registration">회원가입</a>
                                 </li>
-
                             }
                             else
                             {
@@ -59,34 +77,44 @@
                                     <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">로그아웃</a>
                                 </li>
                             }
-
                         </ul>
-
                     </div>
-
-
                 </div>
-
             </nav>
-    </header>
-    <div>
-        <main role="main">
-            @RenderBody()
-        </main>
+        </header>
+        <div class="main container-fluid">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="border-top footer text-muted" style="line-height: 25px">
+            <div class="container">
+                &copy; 2020 - CosmeticDashboard - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+
+        </footer>
     </div>
 
-    <footer class="border-top footer text-muted" style="line-height: 25px">
-        <div class="container">
-            &copy; 2020 - CosmeticDashboard - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-        
-    </footer>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input:checkbox").on('click', function () {
+                if ($(this).prop('checked')) {
+                    $('#slidediv').addClass("ischecked");
+                }
+                else {
+                    $('#slidediv').removeClass("ischecked");
+                }
+            });
+        });
+    </script>
     @RenderSection("Scripts", false)
 </body>
 </html>

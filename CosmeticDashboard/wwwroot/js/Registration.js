@@ -53,42 +53,4 @@
     }).open();
 }
 
-//function submitForm() {
-//    var roles = ["role1", "role2", "role3"];
 
-//    jQuery.ajax({
-//        type: "POST",
-//        url: '/Account/isDuplicated',
-//        dataType: "json",
-//        contentType: "application/json; charset=utf-8",
-//        data: JSON.stringify(roles),cccc
-//        success: function (data) { alert(data); },
-//        failure: function (errMsg) {
-//            alert(errMsg);
-//        }
-//    });
-//}
-
-//$(document).ready(function () {
-//    $('#idChkBtn').on('click', function () {
-//        $.ajax({
-//            type: 'POST',
-//            url: '/Account/isDuplicated',
-//                contentType: "application/json; charset=utf-8",
-//            data: {
-//                data: $('#id_input').val()
-//            },
-//            dataType: 'json',
-//            cache:false,
-//            success: function (result) {
-//                if (result.Id == 1) {
-//                    $('#checkMsg').html('<img src="~/Icons/confirmed.png" width="30" height="30" style="margin-left:20px"/>');
-//                }
-//                else {
-//                    $('#checkMsg').html('<p style="color:red; margin-left:20px; font-weight:800">사용불가능</p>');
-//                }
-//            }
-//        }); //end ajax });
-
-//    }); //end on });
-//});
