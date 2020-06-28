@@ -54,3 +54,27 @@
 }
 
 
+function submitForm() {
+    event.preventDefault();
+    $.ajax({
+        url: '@Url.Action("isDuplicated","Account")',
+        dataType: "json",
+        type: "Post",
+        contentType: 'application/json',
+        data: JSON.stringify({ ID: $('#id_input').val() }),
+        async: false,
+        processData: false,
+        cache: false,
+        success: function (data) {
+            if (data.isDup == 0) {
+
+                $('#checkMsg').html('<img src="/Icons/confirmed.png" width="30" height="30" style="margin-left:20px"/>');
+            }
+            else {
+                $('#checkMsg').html('<p style="color:red; margin-left:20px; font-weight:800">사용불가능</p>');
+            }
+        },
+        error: function (xhr) {
+            alert('error');
+        }
+    });
