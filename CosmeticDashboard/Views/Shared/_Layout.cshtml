@@ -5,9 +5,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CosmeticDashboard</title>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    @*<script type="text/javascript">
+        $(document).keydown(function (event) {
+            if (event.keyCode == 123) { // Prevent F12
+                return false;
+            } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I        
+                return false;
+            }
+        });
+    </script>*@
+    <script language="javascript" type="text/javascript" src="~/js/Registration.js"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/SlideSidebar.css"/>
+    <link rel="stylesheet" href="~/css/SlideSidebar.css" />
     <style type='text/css'>
         /* This style should explicitly set your navbar to a certain height */
 
@@ -19,6 +31,7 @@
                 height: 37px;
             }
         }
+
         @@media(min-width: 765px) {
 
             #navMain {
@@ -33,9 +46,6 @@
                 height: 28px;
             }
         }
-
-        
-
     </style>
 </head>
 <body>
@@ -52,8 +62,8 @@
                 <li><a asp-area="" asp-controller="Account" asp-action="LoginPage"><i class="fas fa-qrcode"></i>로그인</a></li>
                 <li><a asp-area="" asp-controller="Account" asp-action="Registration"><i class="fas fa-stream"></i>회원가입</a></li>
                 <li><a asp-area="" asp-controller="Note" asp-action="Index"><i class="fas fa-link"></i>게시판</a></li>
-                <li><a ><i class="fas fa-question-circle"></i>고객서비스</a></li>
-                <li><a ><i class="fas fa-envelope"></i>환경설정</a></li>
+                <li><a><i class="fas fa-question-circle"></i>고객서비스</a></li>
+                <li><a><i class="fas fa-envelope"></i>환경설정</a></li>
             </ul>
         </div>
     </div>
@@ -63,7 +73,7 @@
             </nav>
             <nav id="navMain" style="z-index:3" class="navbar sticky-top navbar-expand-xl navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
                 <div class="container">
-                    <a class="navbar-brand logo" asp-controller="Home" asp-action="Index"><img src="~/Logo/granco 로고 png.png" ></a>
+                    <a class="navbar-brand logo" asp-controller="Home" asp-action="Index"><img src="~/Logo/granco 로고 png.png"></a>
                     <a class="navbar-brand d-none d-sm-block d-md-block">맞춤형 화장품</a>
                     @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
@@ -111,24 +121,17 @@
     </div>
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    @*<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.js"></script>
+    <script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>*@
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("input:checkbox").on('click', function () {
-                if ($(this).prop('checked')) {
-                    $('#slidediv').addClass("ischecked");
-                }
-                else {
-                    $('#slidediv').removeClass("ischecked");
-                }
-            });
-        });
-    </script>
+    
     @RenderSection("Scripts", false)
 </body>
 </html>

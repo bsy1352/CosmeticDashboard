@@ -2,7 +2,13 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
-$("#menuicon").on(function () {
-    $("body").fadeOut(200);
-
+$(document).ready(function () {
+    $("input:checkbox").on('click', function () {
+        if ($(this).prop('checked')) {
+            $('#slidediv').addClass("ischecked");
+        }
+        else {
+            $('#slidediv').removeClass("ischecked");
+        }
+    });
 });

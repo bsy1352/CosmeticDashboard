@@ -57,7 +57,7 @@
 function submitForm() {
     event.preventDefault();
     $.ajax({
-        url: '@Url.Action("isDuplicated","Account")',
+        url: '/Account/isDuplicated',
         dataType: "json",
         type: "Post",
         contentType: 'application/json',
@@ -67,7 +67,6 @@ function submitForm() {
         cache: false,
         success: function (data) {
             if (data.isDup == 0) {
-
                 $('#checkMsg').html('<img src="/Icons/confirmed.png" width="30" height="30" style="margin-left:20px"/>');
             }
             else {
@@ -78,3 +77,4 @@ function submitForm() {
             alert('error');
         }
     });
+};

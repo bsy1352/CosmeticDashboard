@@ -2,15 +2,39 @@
     ViewData["Title"] = "Home Page";
 }
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-
 <style>
     @@media(max-width: 574px) {
 
-        .Index {
+        h1, p {
             justify-content: center;
-            padding-top:15%
+            padding-top: 15%;
+            font-family: NanumSquare;
+            color: white;
+            margin: 0
+        }
+
+        
+
+        .display-1 {
+            font-size:70px;
+            font-weight: 900;
+        }
+    }
+
+    @@media(min-width: 574px) {
+
+        h1, p {
+            justify-content: center;
+            padding-top: 15%;
+            font-family: Nanumsquare;
+            color: white;
+            margin: 0
+        }
+        
+
+        .display-1 {
+            
+            font-weight: 900;
         }
     }
 
@@ -18,7 +42,7 @@
 
 <div class="container-fluid text-center">
     <div class="form-group Index">
-        <h1 class="display-4" style="padding-top:15%">Welcome</h1>
-        <p style="color:whitesmoke">Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <h1 class="display-1">자동화 솔루션, 그 연결을 잇다</h1>
+        <p style="color:whitesmoke;">Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     </div>
 </div>
