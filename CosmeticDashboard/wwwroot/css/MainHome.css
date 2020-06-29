@@ -1,0 +1,25 @@
+﻿a, body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
+    margin: 0;
+    padding: 0;
+}
+
+@media(max-width: 574px) {
+
+    h1, p {
+        justify-content: center;
+        padding-top: 15%;
+        font-family: NanumSquare;
+        color: white;
+        margin: 0
+    }
+}
+
+h1{
+    text-align:center;
+}
+
+#wrap {
+    position: relative;
+    min-width: 1120px;
+    min-height: 100%;
+}
