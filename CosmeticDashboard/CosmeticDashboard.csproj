@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="다운로드\swiper.min.js.다운로드" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Identity.Client" Version="1.0.0" />
     <PackageReference Include="jQuery" Version="3.5.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.5" />
@@ -19,6 +23,10 @@
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.20" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="ReflectionIT.Mvc.Paging" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Video\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
