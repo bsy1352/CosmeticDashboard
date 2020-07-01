@@ -1,0 +1,223 @@
+﻿@charset "utf-8";
+/* Common */
+body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
+    margin: 0;
+    padding: 0
+}
+
+body, input, textarea, select, button, table {
+    font-family: NanumBarunGothic;
+    font-size: 14px;
+    color: #000
+}
+
+img, fieldset {
+    border: 0
+}
+
+img {
+    vertical-align: top
+}
+
+ul, ol {
+    list-style: none
+}
+
+em, address {
+    font-style: normal
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+a {
+    color: #000;
+    text-decoration: none
+}
+
+    a:hover, a:active, a:focus {
+        text-decoration: none
+    }
+
+.blind {
+    visibility: hidden !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important
+}
+
+.sp {
+    display: inline-block;
+    overflow: hidden;
+    background-image: url(/img/naver/sp_career_v2.png);
+    background-repeat: no-repeat;
+    line-height: 999px;
+    vertical-align: top
+}
+
+.sp2 {
+    display: inline-block;
+    overflow: hidden;
+    background-image: url(/img/naver/sp_career2_v2.png);
+    background-repeat: no-repeat;
+    line-height: 999px;
+    vertical-align: top
+}
+
+
+body {
+    background-color: #eff0f2
+}
+#wrap {
+    min-width: 980px;
+}
+
+
+
+.gnb_area {
+    width: 100%;
+    height: 49px;
+    border-bottom: 1px solid #dcdde0;
+    background-color: #fff
+}
+
+    .gnb_area .gnb_con {
+        position: relative;
+        width: 980px;
+        margin: 0 auto
+    }
+
+.gnb_con .gnb li {
+    float: left;
+    margin: 17px 18px 0
+}
+
+    .gnb_con .gnb li:first-child {
+        margin: 17px 18px 0 0
+    }
+
+    .gnb_con .gnb li a {
+        display: block;
+        height: 30px;
+        margin: 0 7px
+    }
+
+    .gnb_con .gnb li .devlop {
+        width: 27px;
+        background-position: 0 -26px
+    }
+
+    .gnb_con .gnb li .design {
+        width: 76px;
+        background-position: -2px -1241px
+    }
+
+    .gnb_con .gnb li .con_ser {
+        width: 91px;
+        background-position: -84px -26px
+    }
+
+    .gnb_con .gnb li .com_sup {
+        width: 51px;
+        background-position: 0 -51px
+    }
+
+    .gnb_con .gnb li.on {
+        padding-bottom: 15px;
+        *padding-bottom: 9px;
+        border-bottom: 3px solid #2db400
+    }
+
+.gnb_con .sup_area {
+    position: absolute;
+    top: 17px;
+    right: 0
+}
+
+    .gnb_con .sup_area li {
+        float: left;
+        margin: 0 0 0 26px
+    }
+
+        .gnb_con .sup_area li:first-child {
+            margin: 0
+        }
+
+        .gnb_con .sup_area li a {
+            display: block;
+            height: 17px
+        }
+
+    .gnb_con .sup_area .my_app {
+        width: 72px;
+        background-position: 0 -76px
+    }
+
+    .gnb_con .sup_area .app_inqu {
+        width: 70px;
+        background-position: -82px -76px
+    }
+
+    .gnb_con .sup_area .lang_area {
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-top: 3px
+    }
+
+#content {
+    width: 980px;
+    margin: 0 auto
+}
+
+.work_head {
+    margin: 50px 0 0;
+    padding: 83px 0 76px;
+    border: 1px solid #e6e6e6;
+    border-bottom: 0;
+    background-color: #fff;
+    text-align: center
+}
+
+    .work_head h3 {
+        font-family: NanumBarunGothicLight;
+        font-size: 46px;
+        font-weight: normal;
+        color: #000;
+        letter-spacing: -1px
+    }
+
+        .work_head h3 em {
+            font-size: 50px;
+            font-family: NanumBarunGothic
+        }
+
+.wrk_txt_box {
+    padding: 64px 0 62px;
+    border: 1px solid #e6e6e6;
+    border-width: 0 1px;
+    background-color: #fff;
+    font-family: NanumBarunGothicLight;
+    font-size: 18px;
+    line-height: 31px;
+    color: #666;
+    letter-spacing: -1px;
+    text-align: center
+}
+
+    .wrk_txt_box em {
+        color: #2db400
+    }
+
+    .wrk_txt_box.v2 {
+        margin: 0 0 93px;
+        padding: 64px 0 142px;
+        border-width: 0 1px 1px
+    }

@@ -5,23 +5,142 @@
 
 @media(max-width: 574px) {
 
+    .Main-Page {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        background-image: linear-gradient(151deg, #3247e0, #e25b55);
+        font-family: NanumSquare;
+        color: white;
+    }
+
+        .Main-Page .slide_text_box {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+
+        .Main-Page .slide_title {
+            margin-bottom: 32px;
+            font-family: "NanumSquare-EB", "나눔고딕", "Dotum", "돋움", "Helvetica", "Arial", "AppleSDGothicNeo", sans-serif;
+            font-size: 20px;
+            line-height: 30px;
+        }
+
+            .Main-Page .slide_title strong {
+                display: table-cell;
+                vertical-align: middle;
+                height: 92px;
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 30px;
+                letter-spacing: -1px;
+            }
+
+        .Main-Page .slide_text {
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+            .Main-Page .slide_text span {
+                display: table-cell;
+                vertical-align: middle;
+                height: 48px;
+            }
+
+                .Main-Page .slide_text span em {
+                    display: inline-block;
+                    vertical-align: top;
+                    margin: 0 3px;
+                }
+
+    /* Position these two as you please */
+    .trigger-top,
+    .trigger-bottom {
+        width: 100%;
+        text-indent: -50%;
+        position: fixed;
+        top: 50%;
+        border-top: 1px dotted #000000;
+    }
+
+    .trigger-bottom {
+        top: auto;
+        bottom: 40%;
+    }
+
+    .video-wrapper {
+        position: relative;
+        border: 1px solid transparent;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+        .video-wrapper .tracker {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1px;
+            height: 1px;
+            padding: 1px; /* these 3 attributes are here just for the show */
+            border: 1px solid transparent;
+            color: transparent;
+            line-height: 1px;
+            text-indent: 5px; /* again, just for the show */
+        }
+
+    .gallery-section {
+        width: 100%;
+        padding: 10px 0;
+        background: #f1f1f1;
+    }
+
+    .inner-width {
+        width: 100%;
+        
+        margin: auto;
+        padding: 0 20px;
+    }
+
+    .gallery-section h1 {
+        text-align: center;
+        text-transform: uppercase;
+        color: #333;
+    }
+
+    .border {
+        width: 20px;
+        height: 2px;
+        background: #333;
+        margin: 30px auto;
+    }
+
+    .gallery-section .gallery {
+        display: flex;
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+    }
+
+    .gallery-section .image {
+        flex: 25%;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+        .gallery-section .image img {
+            width: 100%;
+            height: 100%;
+            transition: 0.4s;
+        }
+
+        .gallery-section .image:hover img {
+            transform: scale(1.4) rotate(15deg);
+        }
     
 }
 @media(min-width: 574px) {
 
     
-    
-    .video-wrapper {
-        position: relative;
-        color: blue;
-        border: 1px solid blue;
-        width: 400px;
-        height: 300px;
-        margin: 0 auto;
-    }
-
-       
-
 
     .Main-Page {
         position: relative;
@@ -72,73 +191,41 @@
                     vertical-align: top;
                     margin: 0 3px;
                 }
-    .intro h1, .outro h2 {
-        font-weight: 300;
-        text-align: center;
-        text-transform: uppercase;
-    }
 
-    .space {
-        height: 120vh;
-    }
-
-    .vid-section {
-        background: #ccc;
-        padding: 0px;
-    }
-
-    .vid-wrap {
+    /* Position these two as you please */
+    .trigger-top,
+    .trigger-bottom {
         width: 100%;
-        height: 600px;
-        background: white;
-        opacity: 1;
+        text-indent: -50%;
+        position: fixed;
+        top: 30%;
+        border-top: 1px dotted #000000;
+    }
+
+    .trigger-bottom {
+        top: auto;
+        bottom: 30%;
+    }
+
+    .video-wrapper {
         position: relative;
-        overflow: hidden;
-        margin-top: 150px;
+        border: 1px solid transparent;
+        width: 1500px;
+        margin: 0 auto;
     }
 
-    .responsive-vid {
-        padding-top: 56.25%;
-        position: absolute;
-        top: 50%;
-        left: 0;
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-        width: 100%;
-    }
-
-        .responsive-vid iframe {
+        .video-wrapper .tracker {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 50%;
+            left: 50%;
+            width: 1px;
+            height: 1px;
+            padding: 1px; /* these 3 attributes are here just for the show */
+            border: 1px solid transparent;
+            color: transparent;
+            line-height: 1px;
+            text-indent: 5px; /* again, just for the show */
         }
-
-    #player {
-        opacity: 0;
-        transition: all .5s ease-in-out;
-    }
-
-    .video__overlay {
-        background: black;
-        opacity: 0.35;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
-
-    .video__title {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        color: #fff;
-        -webkit-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-        font-size: 36px;
-    }
 
 
     .main_slide {

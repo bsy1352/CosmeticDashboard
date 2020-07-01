@@ -24,24 +24,58 @@
 
 </head>
 <body>
-    @*<div class="d-block d-md-none d-lg-none slidediv" id="slidediv" style="z-index:8; position:absolute; margin-left:5px; margin-top:3px">
+    <div class="d-block d-md-none d-lg-none slidediv" id="slidediv" style="z-index: 999999; position:absolute; margin-left:5px; margin-top:3px">
         <input type="checkbox" id="menuicon">
         <label for="menuicon">
             <span></span>
-
             <span></span>
         </label>
+        <script>
+            $('.feat-btn').click(function () {
+                $('.feat-show').toggleClass("show");
+                $('.first').toggleClass("rotate");
+            });
+            $('.serv-btn').click(function () {
+                $('.serv-show').toggleClass("show");
+                $('.second').toggleClass("rotate");
+            });
+            $('.news-btn').click(function () {
+                $('.news-show').toggleClass("show");
+                $('.third').toggleClass("rotate");
+            });
+        </script>
         <div class="sidebar">
-            <header>메뉴</header>
             <ul>
-                <li><a asp-area="" asp-controller="Account" asp-action="LoginPage"><i class="fas fa-qrcode"></i>로그인</a></li>
-                <li><a asp-area="" asp-controller="Account" asp-action="Registration"><i class="fas fa-stream"></i>회원가입</a></li>
-                <li><a asp-area="" asp-controller="Note" asp-action="Index"><i class="fas fa-link"></i>게시판</a></li>
-                <li><a><i class="fas fa-question-circle"></i>고객서비스</a></li>
-                <li><a><i class="fas fa-envelope"></i>환경설정</a></li>
+                <li>
+                    <a href="#" class="feat-btn"><i class="fas fa-home"></i>GRANCO<span class="fas fa-caret-down first"></span></a>
+                    <ul class="feat-show">
+                        <li>회사 소개</li>
+                        <li>Contact</li>                        
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="serv-btn"><i class="fas fa-lightbulb"></i>SOLUTIONS<span class="fas fa-caret-down second"></span></a>
+                    <ul class="serv-show">
+                        <li>SMART FACTORY</li>
+                        <li>MES</li>
+                        <li>IT SOLUTION</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="news-btn"><i class="fas fa-newspaper"></i>NEWS<span class="fas fa-caret-down third"></span></a>
+                    <ul class="news-show">
+                        <li>그란코 소식</li>
+                        <li>이 달의 행사</li>
+                        <li>미디어</li>
+                    </ul>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Career"><i class="fas fa-handshake"></i>CAREER</a>
+                    
+                </li>
             </ul>
         </div>
-    </div>*@
+    </div>
     <div id="wrap">
         <script type="text/javascript">
             $(document).ready(function () {
@@ -97,26 +131,31 @@
 
         </script>
         <header>
-            <div class="header_wrap">
+            <div class="header_wrap_mobile d-block d-sm-none d-md-none">
+
+                <h1 class="header_logo_mobile">
+                    <span class="blind">GRANCO</span>
+                </h1>
+            </div>
+            <div class="header_wrap d-none d-sm-block  d-md-block">
                 <h1 class="header_logo">
                     <a asp-area="" asp-action="Index" asp-controller="Home"><span class="blind">GRANCO</span></a>
                 </h1>
                 <nav>
                     <ul class="gnb_menu" role="menu">
-                        <!-- .gnb_menu_list 활성화 시, on클래스 추가 // .gnb_menu_list에 호버, 포커스 시, .gnb_menu_item의 aria-expanded="true" // .gnb_dropMenu_wrap slideUp, Down -->
                         <li class="gnb_menu_list " role="menuitem" aria-haspopup="true">
                             <a asp-area="" asp-action="Index" asp-controller="Home" aria-expanded="false" class="gnb_menu_item">GRANCO</a>
                             <ul class="gnb_dropMenu_wrap">
                                 <li>
                                     <ul class="gnb_dropMenu">
                                         <li class="depth_blank">
-                                            <a href="https://www.navercorp.com/naver/company" class="gnb_dropMenu_item"><strong><span>GRANCO</span></strong></a>
+                                            <a class="gnb_dropMenu_item"><strong><span>GRANCO</span></strong></a>
                                         </li>
                                         <li>
                                             <a class="gnb_dropMenu_item"><span class="depth">회사 소개</span></a>
                                         </li>
                                     </ul>
-                                </li> 
+                                </li>
                                 <li>
                                     <ul class="gnb_dropMenu">
                                         <li>
@@ -140,14 +179,14 @@
                                 <li>
                                     <ul class="gnb_dropMenu">
                                         <li>
-                                            <a class="gnb_dropMenu_item"><strong><span>For</span><br><span>MES</span></strong></a>
+                                            <a class="gnb_dropMenu_item"><strong><span>MES</span></strong></a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
                                     <ul class="gnb_dropMenu">
                                         <li>
-                                            <a class="gnb_dropMenu_item btn_link" target="_blank"><strong><span>ALL</span><br><span>SERVICE</span></strong></a>
+                                            <a class="gnb_dropMenu_item btn_link"><strong><span>IT SOLUTIONS</span></strong></a>
                                         </li>
                                     </ul>
                                 </li>
@@ -189,20 +228,20 @@
                                         </li>
                                     </ul>
                                 </li>
-                               
+
                             </ul>
                         </li>
 
                         <li class="gnb_menu_list_recruit" role="menuitem" aria-haspopup="false">
-                            <a class="gnb_menu_item recruit" target="_blank">CAREER</a>
+                            <a class="gnb_menu_item recruit" asp-area="" asp-action="Index" asp-controller="Career">CAREER</a>
                         </li>
                     </ul>
                 </nav>
                 <div class="header_util">
                     @*<div class="header_lang" role="listbox">
-                        <a role="option" aria-selected="true">KOR</a>
-                        <a role="option" aria-selected="false">ENG</a>
-                    </div>*@
+                            <a role="option" aria-selected="true">KOR</a>
+                            <a role="option" aria-selected="false">ENG</a>
+                        </div>*@
                     <!-- .btn_sitemap 클릭 시, aria-expanded="true" // header에 active클래스 추가 -->
                     <div class="sitemap_box">
                         <button type="button" class="btn_sitemap" aria-expanded="false">
@@ -588,7 +627,7 @@
             <!-- //sitemap -->
 
         </header>
-        
+
         <div class="container" role="main">
             @RenderBody()
         </div>
@@ -626,10 +665,10 @@
                     <ul class="affiliate_list" role="listbox">
                         <!-- [D] .affiliate_item선택 시, aria-selected="true" -->
                         <li class="affiliate_item" role="option" aria-selected="false">
-                            <a  target="_blank"><span>MUINHWA (준비중입니다.)</span></a>
+                            <a target="_blank"><span>MUINHWA (준비중입니다.)</span></a>
                         </li>
                         <li class="affiliate_item" role="option" aria-selected="false">
-                            <a  target="_blank"><span>G-Youtube (준비중입니다.)</span></a>
+                            <a target="_blank"><span>G-Youtube (준비중입니다.)</span></a>
                         </li>
                         <li class="affiliate_item" role="option" aria-selected="false">
                             <a href="https://blog.naver.com/granco_com" target="_blank"><span>G-Blog</span></a>
@@ -642,11 +681,11 @@
     </div>
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    
-    
+
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    
+
     @RenderSection("Scripts", false)
 </body>
 </html>

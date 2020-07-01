@@ -199,6 +199,61 @@ header {
 .header_up {
     top: -80px;
 }
+@media (min-width: 574px) {
+
+    .container {
+        padding: 80px 0 160px;
+        max-width: 100%;
+    }
+
+}
+
+@media (max-width: 574px){
+
+    .container {
+        padding: 40px 0 160px;
+        max-width: 100%;
+    }
+
+    #wrap {
+        position: relative;
+        min-width: 100%;
+        min-height: 99%;
+    }
+
+    .ischecked{
+        filter: brightness(35%);
+    }
+
+    header {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 9998;
+        min-width: 100%;
+        background-color: rgba(255, 255, 255, 0.97);
+        -webkit-transition: top .4s ease-in-out;
+        transition: top .4s ease-in-out;
+    }
+
+    .header_wrap_mobile {
+        max-width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+        .header_logo_mobile {
+            
+            width: 140px;
+            height: 30px;
+            margin: 5px auto;
+            background: url('../Logo/granco 로고 png.png') no-repeat;
+            background-size: 140px 30px;
+        }
+
+    
+}
 
 .header_wrap {
     max-width: 1600px;
@@ -696,7 +751,3 @@ footer {
     overflow: hidden;
 }
 
-.container {
-    padding: 80px 0 160px;
-    max-width: 100%;
-}
