@@ -21,7 +21,12 @@ namespace CosmeticDashboard.Controllers
         {
             return View();
         }
-        
+
+        public IActionResult MainIndex()
+        {
+            return View();
+        }
+
 
         public async Task<IActionResult> LoginSuccess()
         {

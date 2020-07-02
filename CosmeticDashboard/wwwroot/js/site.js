@@ -12,3 +12,15 @@ $(document).ready(function () {
         }
     });
 });
+
+$(document).ready(function () {
+    $.ajax({
+        url: 'Home/MainIndex',
+        type: 'GET',
+        cache: false,
+        success: function (data) {
+            $('#homepageContents').html(data);
+        }
+    });
+});
+

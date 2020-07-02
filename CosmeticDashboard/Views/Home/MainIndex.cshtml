@@ -1,0 +1,120 @@
+﻿<script type="text/javascript">
+
+                $(function () {
+
+                    var mainSwiper = new Swiper('.main_slide', {
+                        effect: 'slide', // 'slide'(default), 'fade'
+                        autoplay: {
+                            delay: 5000,
+                            disableOnInteraction: false, //사용자 상호 작용 후 자동 재생이 중지되지 않으며 매회 다시 시작
+                        },
+                        speed: 1000,
+                        fadeEffect: {
+                            crossFade: true //이펙트가 'fade'일 경우
+                        },
+                        loop: true,
+                        setWrapperSize: true, //모든 슬라이드의 총 너비/높이 설정
+                        navigation: {
+                            prevEl: '.btn_prev',
+                            nextEl: '.btn_next',
+                        },
+                        threshold: 300 // 임계값이 300이상일 때만 스와이퍼 작동
+                    });
+
+                    mainSwiper.autoplay.start(); //자동 재생 시작
+
+                    //현재 슬라이드에 맞춰 .slide_info_container 변화
+                    mainSwiper.on('slideChangeTransitionStart', function () {
+                        var mainIdx = parseInt($('.swiper-slide-active').attr('data-index'));
+                        $(".current").text(mainIdx + 1); //현재 슬라이드 페이지
+                        var progress = (mainIdx + 1) * 20;
+                        $(".fill").css("width", progress + "%"); //현재 슬라이드 진행바
+                        $(".slide_info_box").each(function (index) { //현재 슬라이드 텍스트
+                            if (index == mainIdx) {
+                                $(this).fadeIn(1000); //speed
+                            } else {
+                                $(this).hide();
+                            }
+                        });
+                    });
+
+                });
+
+                // 최신보도자료 view
+                function recentPressView(id) {
+                    var form = document.getElementById("recentPressForm");
+                    var url = "/promotion/pressReleasesView/" + id;
+                    form.elements["seq"].value = id;
+                    form.action = url;
+                    form.submit();
+                }
+
+</script>
+
+<div class="Main-Page">
+    <div class="slide_text_box">
+        <p class="slide_title"><strong>GRANCO Industry 4.0<br>새로운 세상과 연결을 잇다</strong></p>
+        <p class="slide_text"><span>그란코만의 독자적인 Premium 자동화 솔루션으로<br>체계적이고 혁신적인 스마트 팩토리의 풍요로움을 선사합니다.</span></p>
+    </div>
+</div>
+
+<div class="trigger-top">top trigger</div>
+<div class="trigger-bottom">bottom trigger</div>
+
+<div class="video-wrapper">
+    <video id="sample_video" controls style="width:100%; height:auto">
+        <source src="/Video/granco_media.mp4" type="video/mp4">
+    </video>
+    <div class="tracker">tracker</div>
+</div>
+
+<script type="text/javascript">
+                $(".gallery").magnificPopup({
+                    delegate: 'a',
+                    type: 'image',
+                    gallery: {
+                        enabled: true
+                    }
+                });
+</script>
+<div class="gallery-section">
+    <div class="inner-width">
+        <h1>그란코 한눈에 보기</h1>
+        <div class="border"></div>
+        <div class="gallery">
+
+            <a href="/Img/1.png" class="image">
+                <img src="/Img/1.png" alt="">
+            </a>
+
+            <a href="/Img/2.png" class="image">
+                <img src="/Img/2.png" alt="">
+            </a>
+
+            <a href="/Img/3.png" class="image">
+                <img src="/Img/3.png" alt="">
+            </a>
+
+            <a href="/Img/4.png" class="image">
+                <img src="/Img/4.png" alt="">
+            </a>
+
+            <a href="/Img/5.png" class="image">
+                <img src="/Img/5.png" alt="">
+            </a>
+
+            <a href="/Img/6.png" class="image">
+                <img src="/Img/6.png" alt="">
+            </a>
+
+            <a href="/Img/7.png" class="image">
+                <img src="/Img/7.png" alt="">
+            </a>
+
+            <a href="/Img/8.png" class="image">
+                <img src="/Img/8.png" alt="">
+            </a>
+
+        </div>
+    </div>
+</div>

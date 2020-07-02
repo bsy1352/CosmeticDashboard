@@ -1,140 +1,710 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<link rel="stylesheet" href="~/css/MainHome.css" />
-<link rel="stylesheet" href="~/css/swiper.min.css" />
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/js/swiper.min.js"></script>
-<script src="~/js/AutoPlayVideoScroll.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
-<script type="text/javascript">
-
-    $(function () {
-
-        var mainSwiper = new Swiper('.main_slide', {
-            effect: 'slide', // 'slide'(default), 'fade'
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false, //사용자 상호 작용 후 자동 재생이 중지되지 않으며 매회 다시 시작
-            },
-            speed: 1000,
-            fadeEffect: {
-                crossFade: true //이펙트가 'fade'일 경우
-            },
-            loop: true,
-            setWrapperSize: true, //모든 슬라이드의 총 너비/높이 설정
-            navigation: {
-                prevEl: '.btn_prev',
-                nextEl: '.btn_next',
-            },
-            threshold: 300 // 임계값이 300이상일 때만 스와이퍼 작동
-        });
-
-        mainSwiper.autoplay.start(); //자동 재생 시작
-
-        //현재 슬라이드에 맞춰 .slide_info_container 변화
-        mainSwiper.on('slideChangeTransitionStart', function () {
-            var mainIdx = parseInt($('.swiper-slide-active').attr('data-index'));
-            $(".current").text(mainIdx + 1); //현재 슬라이드 페이지
-            var progress = (mainIdx + 1) * 20;
-            $(".fill").css("width", progress + "%"); //현재 슬라이드 진행바
-            $(".slide_info_box").each(function (index) { //현재 슬라이드 텍스트
-                if (index == mainIdx) {
-                    $(this).fadeIn(1000); //speed
-                } else {
-                    $(this).hide();
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CosmeticDashboard</title>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    @*<script type="text/javascript">
+            $(document).keydown(function (event) {
+                if (event.keyCode == 123) { // Prevent F12
+                    return false;
+                } else if (event.ctrlKey && event.shiftKey && event.keyCode == 73) { // Prevent Ctrl+Shift+I
+                    return false;
                 }
             });
-        });
+        </script>*@
+    <script language="javascript" type="text/javascript" src="~/js/Registration.js"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/SlideSidebar.css" />
+    <script src="~/js/AutoPlayVideoScroll.js"></script>
+    <script src="~/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="~/css/MainHome.css" />
+    <link rel="stylesheet" href="~/css/swiper.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
 
-    });
+</head>
+<body>
+    <div class="d-block d-md-none d-lg-none slidediv" id="slidediv" style="z-index: 999999; position:absolute; margin-left:5px; margin-top:3px">
+        <input type="checkbox" id="menuicon">
+        <label for="menuicon">
+            <span></span>
+            <span></span>
+        </label>
+        <script>
+            $('.feat-btn').click(function () {
+                $('.feat-show').toggleClass("show");
+                $('.first').toggleClass("rotate");
+            });
+            $('.serv-btn').click(function () {
+                $('.serv-show').toggleClass("show");
+                $('.second').toggleClass("rotate");
+            });
+            $('.news-btn').click(function () {
+                $('.news-show').toggleClass("show");
+                $('.third').toggleClass("rotate");
+            });
+        </script>
+        <div class="sidebar">
+            <ul>
+                <li>
+                    <a href="#" class="feat-btn"><i class="fas fa-home"></i>GRANCO<span class="fas fa-caret-down first"></span></a>
+                    <ul class="feat-show">
+                        <li>회사 소개</li>
+                        <li>Contact</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="serv-btn"><i class="fas fa-lightbulb"></i>SOLUTIONS<span class="fas fa-caret-down second"></span></a>
+                    <ul class="serv-show">
+                        <li>SMART FACTORY</li>
+                        <li>MES</li>
+                        <li>IT SOLUTION</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="news-btn"><i class="fas fa-newspaper"></i>NEWS<span class="fas fa-caret-down third"></span></a>
+                    <ul class="news-show">
+                        <li>그란코 소식</li>
+                        <li>이 달의 행사</li>
+                        <li>미디어</li>
+                    </ul>
+                </li>
+                <li>
+                    <a asp-action="Index" asp-controller="Career"><i class="fas fa-handshake"></i>CAREER</a>
 
-    // 최신보도자료 view
-    function recentPressView(id) {
-        var form = document.getElementById("recentPressForm");
-        var url = "/promotion/pressReleasesView/" + id;
-        form.elements["seq"].value = id;
-        form.action = url;
-        form.submit();
-    }
-
-</script>
-
-<div class="Main-Page">
-    <div class="slide_text_box">
-        <p class="slide_title"><strong>GRANCO Industry 4.0<br>새로운 세상과 연결을 잇다</strong></p>
-        <p class="slide_text"><span>그란코만의 독자적인 Premium 자동화 솔루션으로<br>체계적이고 혁신적인 스마트 팩토리의 풍요로움을 선사합니다.</span></p>
-    </div>
-</div>
-
-<div class="trigger-top">top trigger</div>
-<div class="trigger-bottom">bottom trigger</div>
-
-<div class="video-wrapper">
-    <video id="sample_video" controls style="width:100%; height:auto">
-        <source src="/Video/granco_media.mp4" type="video/mp4">
-    </video>
-    <div class="tracker">tracker</div>
-</div>
-
-
-
-
-
-
-<script type="text/javascript">
-        $(".gallery").magnificPopup({
-            delegate: 'a',
-            type: 'image',
-            gallery: {
-                enabled: true
-            }
-        });
-    </script>
-    <div class="gallery-section">
-        <div class="inner-width">
-            <h1>그란코 한눈에 보기</h1>
-            <div class="border"></div>
-            <div class="gallery">
-
-                <a href="/Img/1.png" class="image">
-                    <img src="/Img/1.png" alt="">
-                </a>
-
-                <a href="/Img/2.png" class="image">
-                    <img src="/Img/2.png" alt="">
-                </a>
-
-                <a href="/Img/3.png" class="image">
-                    <img src="/Img/3.png" alt="">
-                </a>
-
-                <a href="/Img/4.png" class="image">
-                    <img src="/Img/4.png" alt="">
-                </a>
-
-                <a href="/Img/5.png" class="image">
-                    <img src="/Img/5.png" alt="">
-                </a>
-
-                <a href="/Img/6.png" class="image">
-                    <img src="/Img/6.png" alt="">
-                </a>
-
-                <a href="/Img/7.png" class="image">
-                    <img src="/Img/7.png" alt="">
-                </a>
-
-                <a href="/Img/8.png" class="image">
-                    <img src="/Img/8.png" alt="">
-                </a>
-
-            </div>
+                </li>
+            </ul>
         </div>
     </div>
+    <div id="wrap">
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.gnb_menu').delegate('.gnb_menu_list', 'mouseenter', function () {
+                    $(this).find('.gnb_dropMenu_wrap').stop().slideDown(500);
+                });
+                $('.gnb_menu').delegate('.gnb_menu_list', 'focusin', function () {
+                    $(this).find('.gnb_dropMenu_wrap').stop().slideDown(500);
+                });
+                $('.gnb_menu').delegate('.gnb_menu_list', 'mouseleave', function () {
+                    $(this).find('.gnb_dropMenu_wrap').stop().slideUp(250);
+                });
+                $('.gnb_menu').delegate('.gnb_menu_list', 'focusout', function () {
+                    $(this).find('.gnb_dropMenu_wrap').stop().slideUp(250);
+                });
+
+                $('.btn_sitemap').click(function () {
+                    $(this).attr("aria-expanded", true);
+                    $('header').toggleClass('active');
+                });
+
+
+                var didScroll;
+                var lastScrollTop = 0;
+                var delta = 5;
+                var navbarHeight = $('header').outerHeight();
+
+                $(window).scroll(function (event) {
+                    didScroll = true;
+                });
+                setInterval(function () {
+                    if (didScroll) {
+                        hasScrolled();
+                        didScroll = false;
+                    }
+                }, 250);
+
+                function hasScrolled() {
+                    var st = $(this).scrollTop();
+
+                    if (Math.abs(lastScrollTop - st) <= delta)
+                        return;
+                    if (st > lastScrollTop && st > navbarHeight) {
+                        $('header').removeClass('header_down').addClass('header_up');
+                    } else {
+                        if (st + $(window).height() < $(document).height()) {
+                            $('header').removeClass('header_up').addClass('header_down');
+                        }
+                    }
+                    lastScrollTop = st;
+                }
+            });
+
+        </script>
+        <header>
+            <div class="header_wrap_mobile d-block d-sm-none d-md-none">
+
+                <h1 class="header_logo_mobile">
+                    <span class="blind">GRANCO</span>
+                </h1>
+            </div>
+            <div class="header_wrap d-none d-sm-block  d-md-block">
+                <h1 class="header_logo">
+                    <a asp-area="" asp-action="Index" asp-controller="Home"><span class="blind">GRANCO</span></a>
+                </h1>
+                <nav>
+                    <ul class="gnb_menu" role="menu">
+                        <li class="gnb_menu_list " role="menuitem" aria-haspopup="true">
+                            <a asp-area="" asp-action="Index" asp-controller="Home" aria-expanded="false" class="gnb_menu_item">GRANCO</a>
+                            <ul class="gnb_dropMenu_wrap">
+                                <li>
+                                    <ul class="gnb_dropMenu">
+                                        <li class="depth_blank">
+                                            <a class="gnb_dropMenu_item"><strong><span>GRANCO</span></strong></a>
+                                        </li>
+                                        <li>
+                                            <a class="gnb_dropMenu_item"><span class="depth">회사 소개</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul class="gnb_dropMenu">
+                                        <li>
+                                            <a class="gnb_dropMenu_item"><strong><span>CONTACT</span></strong></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="gnb_menu_list " role="menuitem" aria-haspopup="true">
+                            <a aria-expanded="false" class="gnb_menu_item">SOLUTIONS</a>
+                            <ul class="gnb_dropMenu_wrap">
+                                <li>
+                                    <ul class="gnb_dropMenu">
+                                        <li>
+                                            <a class="gnb_dropMenu_item"><strong><span>SMART FACTORY</span></strong></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul class="gnb_dropMenu">
+                                        <li>
+                                            <a class="gnb_dropMenu_item"><strong><span>MES</span></strong></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul class="gnb_dropMenu">
+                                        <li>
+                                            <a class="gnb_dropMenu_item btn_link"><strong><span>IT SOLUTIONS</span></strong></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="gnb_menu_list " role="menuitem" aria-haspopup="true">
+                            <a aria-expanded="false" class="gnb_menu_item">NEWS</a>
+                            <ul class="gnb_dropMenu_wrap">
+                                <li>
+                                    <ul class="gnb_dropMenu">
+                                        <li>
+                                            <a class="gnb_dropMenu_item"><strong><span>그란코 소식</span></strong></a>
+                                        </li>
+                                        <li>
+                                            <a class="gnb_dropMenu_item"><span class="depth">보도 자료</span></a>
+                                        </li>
+                                        <li>
+                                            <a class="gnb_dropMenu_item"><span class="depth">미디어</span></a>
+                                        </li>
+                                        <li>
+                                            <a class="gnb_dropMenu_item"><span class="depth">행사</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul class="gnb_dropMenu">
+                                        <li class="depth_blank">
+                                            <a class="gnb_dropMenu_item"><strong><span>홍보</span></strong></a>
+                                        </li>
+                                        <li>
+                                            <a class="gnb_dropMenu_item"><span class="depth">관련 뉴스</span></a>
+                                        </li>
+                                        <li>
+                                            <a class="gnb_dropMenu_item"><span class="depth">그란코 리포트</span></a>
+                                        </li>
+                                        <li>
+                                            <a class="gnb_dropMenu_item"><span class="depth">BLOG</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </li>
+
+                        <li class="gnb_menu_list_recruit" role="menuitem" aria-haspopup="false">
+                            <a class="gnb_menu_item recruit" asp-area="" asp-action="Index" asp-controller="Dashboard">CAREER</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header_util">
+                    @*<div class="header_lang" role="listbox">
+                        <a role="option" aria-selected="true">KOR</a>
+                        <a role="option" aria-selected="false">ENG</a>
+                    </div>*@
+                    <!-- .btn_sitemap 클릭 시, aria-expanded="true" // header에 active클래스 추가 -->
+                    <div class="sitemap_box">
+                        <button type="button" class="btn_sitemap" aria-expanded="false">
+                            <span class="blind">사이트맵 열기/닫기</span>
+                            <span class="btn_line"></span>
+                            <span class="btn_line"></span>
+                            <span class="btn_line"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            </header>
+            <!-- sitemap -->
+            <div class="sitemap">
+                <ul class="sitemap_container">
+                    <li class="sitemap_list">
+                        <strong class="menu_title">네이버</strong>
+                        <ul class="menu_container">
+                            <li class="menu_list depth_title">
+                                <a>
+                                    <strong><span>NAVER</span></strong>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">그란코 소개</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">주요연혁</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">수상내역</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>주요관계사</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list depth_title">
+                                <a>
+                                    <strong><span>제휴제안</span></strong>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">제휴제안 안내</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">제휴제안 등록</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">검토현황 조회</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>Contact</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sitemap_list">
+                        <strong class="menu_title">서비스</strong>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>FEATURED SERVICES</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>FOR BUSINESS</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>FOR CREATORS</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>FOR DEVELOPERS</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>ALL SERVICE</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sitemap_list">
+                        <strong class="menu_title">가치실현</strong>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>프로젝트 꽃</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list depth_title">
+                                <a>
+                                    <strong><span>기업윤리</span></strong>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">기업윤리규범</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">기업윤리 상담센터</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list depth_title">
+                                <a>
+                                    <strong><span>프라이버시 센터</span></strong>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">네이버 리포트</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">개인정보보호</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">정보보호인증</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>동반성장</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list depth_title">
+                                <a>
+                                    <strong><span>환경</span></strong>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">데이터센터 각</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">네이버 사옥</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list depth_title">
+                                <a>
+                                    <strong><span>With Naver</span></strong>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">재단법인 해피빈</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">네이버 문화재단</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">커넥트 재단</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">접근성</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">네이버 라이브러리</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sitemap_list">
+                        <strong class="menu_title">홍보</strong>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>보도자료</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>TV광고</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>미디어행사</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>커뮤니케이션 채널</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="sitemap_list">
+                        <strong class="menu_title">투자정보</strong>
+                        <ul class="menu_container">
+                            <li class="menu_list depth_title">
+                                <a>
+                                    <strong><span>기업지배구조</span></strong>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">주주구성</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">이사회</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">정관</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list classify">
+                                <a>
+                                    <strong><span>공시정보</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list classify">
+                                <a>
+                                    <strong><span>주가정보</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list classify">
+                                <a>
+                                    <strong><span>재무정보</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list depth_title">
+                                <a>
+                                    <strong><span>IR일정</span></strong>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">IR 행사</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">IR MEETING</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">주주총회</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list depth_title">
+                                <a>
+                                    <strong><span>IR자료실</span></strong>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">실적발표</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">감사보고서</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">사업보고서</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">연차보고서</span>
+                                </a>
+                            </li>
+                            <li class="menu_list">
+                                <a>
+                                    <span class="depth">FAQ</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list classify">
+                                <a>
+                                    <strong><span>결산공고</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>공고</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sitemap_list">
+                        <strong class="menu_title">채용</strong>
+                        <ul class="menu_container">
+                            <li class="menu_list">
+                                <a>
+                                    <strong><span>채용정보</span></strong>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- //sitemap -->
+            <div class="container" role="main">
+                <div id="homepageContents">
+                
+                
+                </div>
+            </div>
+
+            <script type="text/javascript">
+
+                $(document).ready(function () {
+                    var btn_affiliate = $(".btn_affiliate");
+
+                    btn_affiliate.bind("click", function () { 				// 셀렉트 박스 열고 닫기
+                        btn_affiliate.attr("aria-expanded", "true");
+                        $(window).bind("click", function () { 					// 셀렉트 박스가 선택되면 모든 윈도우에 이벤트 추가
+                            btn_affiliate.attr("aria-expanded", "false");				// 모든윈도우가 클릭되면 옵션 박스 의 on 삭제
+                            $(window).unbind("click");							// 윈도우의 클릭이벤트 삭제
+                        });
+                        return false;
+                    });
+
+                    $(".affiliate_item").click(function () {
+                        $(".btn_affiliate").attr('aria-expanded', 'false');
+                    });
+                });
+
+            </script>
+            <footer>
+                <div class="footer_wrap">
+                    <strong class="footer_logo"><span class="blind">Granco</span></strong>
+                    <ul class="footer_menu">
+                        <li>
+                            <a href="https://www.navercorp.com/policy/person" class="footer_menu_item" style="font-weight: bold;">개인정보 처리방침</a>
+                        </li>
+                    </ul>
+                    <div class="affiliate_box" aria-haspopup="true">
+                        <!-- [D] .btn_affiliate클릭 시, aria-expanded="true" // 선택 완료 시, aria-expanded="false" -->
+                        <button type="button" class="btn_affiliate" aria-expanded="false">Granco Channels</button>
+                        <ul class="affiliate_list" role="listbox">
+                            <!-- [D] .affiliate_item선택 시, aria-selected="true" -->
+                            <li class="affiliate_item" role="option" aria-selected="false">
+                                <a target="_blank"><span>MUINHWA (준비중입니다.)</span></a>
+                            </li>
+                            <li class="affiliate_item" role="option" aria-selected="false">
+                                <a target="_blank"><span>G-Youtube (준비중입니다.)</span></a>
+                            </li>
+                            <li class="affiliate_item" role="option" aria-selected="false">
+                                <a href="https://blog.naver.com/granco_com" target="_blank"><span>G-Blog</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="footer_copy">Copyright ⓒ <strong>Granco Co., Ltd.</strong> All Rights Reserved.</p>
+                </div>
+            </footer>
+        
+    </div>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
 
 @* <div class="main_slide swiper-container swiper-container-horizontal">
     <div class="slide_info_container" style="z-index: 1000;">
@@ -172,7 +742,7 @@
         </a>
 
         <div class="slide_progressbar">
-            
+
             <span class="fill" style="width: 80%;"></span>
         </div>
         <div class="slide_paging">
