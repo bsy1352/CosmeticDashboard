@@ -2,14 +2,25 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
-    font-family: NanumSquare;
     box-sizing: border-box;
     
+}
+    *:not(#passwordbox) {
+        font-family: NanumSquare;
+    }
+
+    html {
+        height: 100%;
+    }
+
+body {
+
+    background-image: linear-gradient(151deg, #3247e0, #e25b55);
 }
 
 @media(max-width: 574px) {
     .login-form {
-        width: 360px;
+        width: 340px;
         background: #f1f1f1;
         height: 580px;
         padding: 80px 40px;
@@ -17,12 +28,12 @@
         position: absolute;
         left: 50%;
         top: -45%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -44%);
         animation: movedown 1.7s forwards;
     }
 }
 
-@media(min-width: 575px) {
+@media(min-width: 574px) {
     .login-form {
         width: 360px;
         background: #f1f1f1;
@@ -64,7 +75,7 @@
 
 .txtb input{
     font-size: 15px;
-    color: #333;
+    color: #000000;
     border: none;
     width: 100%;
     outline: none;

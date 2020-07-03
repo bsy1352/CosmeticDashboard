@@ -15,11 +15,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CosmeticDashboard.Controllers
 {
-    public class AccountController : Controller
+    public class HiddenController : Controller
     {
         private readonly AspnetNoteDbContext _db;
 
-        public AccountController(AspnetNoteDbContext db)
+        public HiddenController(AspnetNoteDbContext db)
         {
             _db = db;
         }
@@ -64,12 +64,13 @@ namespace CosmeticDashboard.Controllers
                     HttpContext.Session.SetString("USER_LOGIN_ID", user.UserId);
                     HttpContext.Session.SetString("USER_LOGIN_NAME", user.UserName);
                     //로그인에 성공했을 때
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Dashboard");
 
                 }
-
-                TempData["LoginFailure"] = "로그인실패";
+                ModelState.Clear();
+                TempData["LoginFailure"] = "로그인 정보가 틀립니다. 다시 확인해 주세요.";
             }
+
 
             return View();
         }

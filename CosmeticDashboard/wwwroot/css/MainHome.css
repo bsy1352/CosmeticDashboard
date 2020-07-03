@@ -61,7 +61,7 @@
         text-indent: -50%;
         position: fixed;
         top: 50%;
-        border-top: 1px dotted #000000;
+        border-top: 1px dotted transparent;
     }
 
     .trigger-bottom {
@@ -199,7 +199,7 @@
         text-indent: -50%;
         position: fixed;
         top: 30%;
-        border-top: 1px dotted #000000;
+        border-top: 1px dotted transparent;
     }
 
     .trigger-bottom {

@@ -1,0 +1,128 @@
+﻿@model CosmeticDashboard.ViewModel.LoginViewModel
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Log In</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="~/css/LoginStyleSheet.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+</head>
+<body>
+    @*<div class="modal fade" id="myModal" role="dialog"></div>*@
+   
+    <div class="MainDiv">
+        <form method="post" asp-action="LoginPage" asp-controller="Hidden" class="login-form">
+
+            <h1>로그인</h1>
+            @if (TempData["LoginFailure"] != null)
+            {
+                <span class="text-danger" style="color:red;">@TempData["LoginFailure"].ToString()</span>
+            }
+            <span class="text-danger" asp-validation-for="UserId"></span>
+            <div class="txtb">
+                <input type="text" asp-for="UserId" />
+                <span data-placeholder="Username" style="font-weight: 900;" id="span"></span>
+            </div>
+
+            <span class="text-danger" asp-validation-for="UserPassword"></span>
+
+            <div class="txtb">
+                <input type="password" asp-for="UserPassword" id="passwordbox" />
+                <span data-placeholder="Password" style="font-weight: 900;"></span>
+
+            </div>
+
+            <input type="submit" class="logbtn" value="로그인" />
+
+            <div class="bottom-text">
+                아직 계정이 없으신가요? <a asp-controller="Hidden" asp-action="Register">회원가입</a>
+            </div>
+
+        </form>
+    </div>
+
+
+
+
+
+    <script type="text/javascript">
+
+        $("input").on("focus", function () {
+            $(this).addClass("focus");
+            $('.text-danger').text("");
+        });
+
+        $("input").on("blur", function () {
+            if ($(this).val() == "") {
+                $(this).removeClass("focus");
+            }
+
+        });
+
+        
+
+        @*$(document).ready(function () {
+
+            
+            alert(@Html.ValidationMessage("loginFailed"));*@
+
+            @*var tempdataval = '@TempData["LoginFailure"]';
+            if (tempdataval != null && tempdataval != '') {
+                return false;
+                alert("아이디 혹은 비밀번호가 틀립니다.")
+                
+                //$('#myModal').modal('show');
+            }*@
+
+
+            @*$('button').click(function () {
+
+                 $.ajax({
+                    url: '/Hidden/LoginFailure',
+                    type: 'GET',
+                    async: true,
+                    dataType: "html"
+                })
+                    .done(function (result) {
+                        //$('#myModal').html(result);
+                        var tempdataval = '@TempData["LoginFailure"]';
+                        if (tempdataval != null && tempdataval != '') {
+
+                            alert("아이디 혹은 비밀번호가 틀립니다.")
+                            history.go(0);
+                            //$('#myModal').modal('show');
+                        }
+                    });
+
+            });*@
+
+        //});
+
+
+
+        //$('button').click(function () {
+        //    $.ajax({
+        //        url: '/Account/Login',
+        //        type: 'POST',
+        //        async: true,
+        //    })
+        //        .done(function (data) {
+
+        //        });
+        //});
+
+
+
+    </script>
+</body>
+</html>
+
+    
+
+
+    
+
+
