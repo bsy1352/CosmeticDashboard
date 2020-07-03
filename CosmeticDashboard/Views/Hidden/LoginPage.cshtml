@@ -1,4 +1,7 @@
-﻿@model CosmeticDashboard.ViewModel.LoginViewModel
+﻿@{
+    ViewData["Title"] = "대시보드 로그인";
+}
+@model CosmeticDashboard.ViewModel.LoginViewModel
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,7 +15,7 @@
 </head>
 <body>
     @*<div class="modal fade" id="myModal" role="dialog"></div>*@
-   
+
     <div class="MainDiv">
         <form method="post" asp-action="LoginPage" asp-controller="Hidden" class="login-form">
 
@@ -62,18 +65,18 @@
 
         });
 
-        
+
 
         @*$(document).ready(function () {
 
-            
+
             alert(@Html.ValidationMessage("loginFailed"));*@
 
             @*var tempdataval = '@TempData["LoginFailure"]';
             if (tempdataval != null && tempdataval != '') {
                 return false;
                 alert("아이디 혹은 비밀번호가 틀립니다.")
-                
+
                 //$('#myModal').modal('show');
             }*@
 
@@ -120,9 +123,9 @@
 </body>
 </html>
 
-    
 
 
-    
+
+
 
 
