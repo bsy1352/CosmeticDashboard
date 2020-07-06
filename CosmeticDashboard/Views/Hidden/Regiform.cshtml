@@ -4,14 +4,72 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="~/css/Regiform.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
 </head>
-<body class="wrapper Regiform-Main">
+<body class="wrapper Regiform-body">
     <header class="Regiform-Header">
-
+        <div class="header-inner">
+            <div class="logo">
+                <h1><img src="~/Logo/granco 로고 png.png"></h1>
+            </div>
+        </div>
     </header>
-    <div class="Regiform-Contents">
+    <main class="Regiform-Main">
+        <div class="Regiform-main-inner">
+            <div class="Regiform-main-inner-contents" role="main">
+                <h2>본인 인증</h2>
+                <div>그란코 서비스를 이용하려면 본인 인증이 필요합니다.</div>
+                <div class="contents-group">
+                    <form class="form-group inputForm">
+                        <fieldset>
+                            <div class="input-container">
+                                <label>성</label>
+                                <input type="text" class="form-control shadow-none" aria-required="true" pattern="/^([^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶†‡↕↗↙↖↘♭♩♪♬㉿{}\[\]\/?;:|)*~`!^+<>@@#$%&=×÷₩•°¤《》¡¿(&quot;\\\uD800-\uDFFF]+\s{0,1})*[^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶uDFFF]+$/" autocomplete="off">
+                                <span id="span"></span>
+                                <div>특수문자를 사용할 수 없습니다.</div>
+                            </div>
+                            <div class="input-container">
+                                <label>이름</label>
+                                <input type="text" class="form-control shadow-none" aria-required="true" pattern="/^([^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶†‡↕↗↙↖↘♭♩♪♬㉿{}\[\]\/?;:|)*~`!^+<>@@#$%&=×÷₩•°¤《》¡¿(&quot;\\\uD800-\uDFFF]+\s{0,1})*[^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶uDFFF]+$/" autocomplete="off">
+                                <span id="span"></span>
+                                <div>특수문자를 사용할 수 없습니다.</div>
+                            </div>
+                        </fieldset>
 
-    </div>
-</body>
-</html>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="Regiform-Footer">
+        <div class="main-info">
+            <div class="footer-inner">
+                <div class="info-links">
+                    <a>이용약관</a>
+
+                    <a>개인정보 처리방침</a>
+                    <a>문의하기</a>
+                </div>
+                <address class="Company-address">Granco Co., Ltd.</address>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        $("input").on("focus", function () {
+            $(this).parent(".input-container").addClass("focus");
+            $('.text-danger').text("");
+        });
+
+        $("input").on("blur", function () {
+            if ($(this).val() == "") {
+                $(this).parent(".input-container").removeClass("focus");
+            }
+
+        });
+    </script>
+</body >
+</html >

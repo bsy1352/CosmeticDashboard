@@ -83,6 +83,13 @@ namespace CosmeticDashboard.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Regiform()
+        {
+
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Registration(LoginViewModel model)
         {
