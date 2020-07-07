@@ -27,16 +27,18 @@
                         <fieldset>
                             <div class="input-container">
                                 <label>성</label>
-                                <input type="text" class="form-control shadow-none" aria-required="true" pattern="/^([^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶†‡↕↗↙↖↘♭♩♪♬㉿{}\[\]\/?;:|)*~`!^+<>@@#$%&=×÷₩•°¤《》¡¿(&quot;\\\uD800-\uDFFF]+\s{0,1})*[^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶uDFFF]+$/" autocomplete="off">
+                                <input type="text" class="form-control danger shadow-none name-input" aria-required="true" pattern="/^([^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶†‡↕↗↙↖↘♭♩♪♬㉿{}\[\]\/?;:|)*~`!^+<>@@#$%&=×÷₩•°¤《》¡¿(&quot;\\\uD800-\uDFFF]+\s{0,1})*[^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶uDFFF]+$/" autocomplete="off">
                                 <span id="span"></span>
-                                <div>특수문자를 사용할 수 없습니다.</div>
+
                             </div>
+                            <div class="input-error hidden">특수문자를 사용할 수 없습니다.</div>
                             <div class="input-container">
                                 <label>이름</label>
-                                <input type="text" class="form-control shadow-none" aria-required="true" pattern="/^([^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶†‡↕↗↙↖↘♭♩♪♬㉿{}\[\]\/?;:|)*~`!^+<>@@#$%&=×÷₩•°¤《》¡¿(&quot;\\\uD800-\uDFFF]+\s{0,1})*[^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶uDFFF]+$/" autocomplete="off">
+                                <input type="text" class="form-control danger shadow-none name-input" aria-required="true" pattern="/^([^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶†‡↕↗↙↖↘♭♩♪♬㉿{}\[\]\/?;:|)*~`!^+<>@@#$%&=×÷₩•°¤《》¡¿(&quot;\\\uD800-\uDFFF]+\s{0,1})*[^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶uDFFF]+$/" autocomplete="off">
                                 <span id="span"></span>
-                                <div>특수문자를 사용할 수 없습니다.</div>
+
                             </div>
+                            <div class="input-error hidden">특수문자를 사용할 수 없습니다.</div>
                         </fieldset>
 
                     </form>
@@ -68,7 +70,17 @@
             if ($(this).val() == "") {
                 $(this).parent(".input-container").removeClass("focus");
             }
+        });
 
+        $(".name-input").bind("keypress", function (e) {
+            var keyCode = e.which ? e.which : e.keyCode
+
+            if (!(keyCode >= 48 && keyCode <= 57)) {
+                $(this).children().removeClass("hidden");
+                return false;
+            } else {
+                $(this).addClass("hidden");
+            }
         });
     </script>
 </body >
