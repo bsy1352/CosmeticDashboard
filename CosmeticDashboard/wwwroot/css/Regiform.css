@@ -219,6 +219,44 @@ fieldset {
         transition: .5s;
     }
 
+.input-bdate {
+    display: flex;
+    width: 100%;
+    margin: 2.215em 0 1.75em;
+    vertical-align: top;
+}
+
+.input-bdate .input-container {
+    margin-right: 1em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+    .input-bdate .birth-year {
+        flex: 1 1 29%;
+    }
+
+    .input-bdate .birth-month {
+        flex: 1 1 43%;
+    }
+
+    .input-bdate .birth-day {
+        flex: 1 1 28%;
+    }
+
+    .input-bdate .birth-year .custom-select {
+        border : none;
+    }
+
+.input-container select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 0 30px 0 0;
+    border-radius: 0;
+    text-overflow: ellipsis;
+}
+
+
 .focus #span::before {
     top: -5px;
 }
@@ -256,6 +294,8 @@ fieldset {
 .input-error{
     position: absolute;
     margin-top: -31px;
+    color: red;
+    font-style: italic;
 }
 
 .hidden {

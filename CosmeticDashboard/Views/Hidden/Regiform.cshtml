@@ -2,8 +2,9 @@
     ViewData["Title"] = "사용자 신청";
 }
 <!DOCTYPE html>
-<html lang="ko">
+<html >
 <head>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
     <link rel="stylesheet" href="~/css/Regiform.css" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -27,18 +28,65 @@
                         <fieldset>
                             <div class="input-container">
                                 <label>성</label>
-                                <input type="text" class="form-control danger shadow-none name-input" aria-required="true" pattern="/^([^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶†‡↕↗↙↖↘♭♩♪♬㉿{}\[\]\/?;:|)*~`!^+<>@@#$%&=×÷₩•°¤《》¡¿(&quot;\\\uD800-\uDFFF]+\s{0,1})*[^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶uDFFF]+$/" autocomplete="off">
+                                <input type="text" class="form-control danger shadow-none name-input" onkeypress="hanEng_chk()" aria-required="true" autocomplete="off" />
                                 <span id="span"></span>
-
                             </div>
-                            <div class="input-error hidden">특수문자를 사용할 수 없습니다.</div>
+                            <div class="input-error hidden">특수문자와 숫자는 사용할 수 없습니다.</div>
                             <div class="input-container">
                                 <label>이름</label>
                                 <input type="text" class="form-control danger shadow-none name-input" aria-required="true" pattern="/^([^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶†‡↕↗↙↖↘♭♩♪♬㉿{}\[\]\/?;:|)*~`!^+<>@@#$%&=×÷₩•°¤《》¡¿(&quot;\\\uD800-\uDFFF]+\s{0,1})*[^£\s¥€§※☆★○●◎◇◆□■△▲▽▼→←←↑↓↔〓◁◀▷▶♤♠♡♥♧♣⊙◈▣◐◑▒▤▥▨▧▦▩♨☏☎☜☞¶uDFFF]+$/" autocomplete="off">
                                 <span id="span"></span>
+                            </div>
+                            <div class="input-error hidden">특수문자와 숫자는 사용할 수 없습니다.</div>
+                            <div class="input-bdate">
+                                <div class="input-container birth-year">
+                                    <label for="year">년</label>
+                                    <input type="tel" id="year" name="year" data-ng-model="vm.year" class="dateofbirthForm ng-pristine ng-valid ng-empty ng-valid-pattern ng-valid-maxlength ng-touched" maxlength="4" aria-required="true" aria-invalid="" aria-describedby="bderror" data-ng-focus="vm.showTip=true;" data-ng-blur="vm.showTip=false;" ng-model-options="{ updateOn: 'keyup blur' }" not-enter="" kr-input="" data-ng-pattern="/^[0-9]{1,4}$/" autocomplete="off">
+                                    <span id="span"></span>
+                                </div>
+                                <div class="input-container selectfield birth-month">
+                                    <label for="month">월</label>
+                                    <select id="month" name="month" data-validate="select" aria-required="true">
+                                        <option selected></option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    <span id="span"></span>
+                                </div>
+                                <div class="input-container birth-day">
+                                    <label for="day">일</label>
+                                    <input type="tel" id="day" name="day" data-ng-model="vm.day" class="dateofbirthForm ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern ng-valid-maxlength" maxlength="2" aria-required="true" aria-invalid="" aria-describedby="bderror" data-ng-focus="vm.showTip=true;" data-ng-blur="vm.showTip=false;" ng-model-options="{ updateOn: 'keyup blur' }" not-enter="" kr-input="" data-ng-pattern="/^[0-9]{1,4}$/" autocomplete="off">
+                                    <span id="span"></span>
+                                </div>
+                            </div>
+                            <div class="input-container selectfield ">
+                                <label for="nationality">국적</label>
+                                <select data-ng-model="vm.nationality" name="nationality" id="nationality" data-validate="select" class="dateofbirthForm ng-untouched ng-valid ng-empty ng-dirty ng-valid-parse" aria-required="true" aria-invalid="true">
+                                    <option value="">국적</option>
+                                    <option value="1">내국인</option>
+                                    <option value="2">외국인</option>
+                                </select>
+                            </div>
+                            <div class="input-container selectfield ">
+                                <label for="nationality">성별</label>
+                                <select data-ng-model="vm.nationality" name="nationality" id="nationality" data-validate="select" class="dateofbirthForm ng-untouched ng-valid ng-empty ng-dirty ng-valid-parse" aria-required="true" aria-invalid="true">
+                                    <option value=""></option>
+                                    <option value="1">내국인</option>
+                                    <option value="2">외국인</option>
+                                </select>
+                            </div>
+                            <div class="input-container">
+                                <label for="nationality">국적</label>
+                                <select data-ng-model="vm.nationality" name="nationality" id="nationality" data-validate="select" class="dateofbirthForm ng-untouched ng-valid ng-empty ng-dirty ng-valid-parse" aria-required="true" aria-invalid="true">
+                                    <option value="" disabled="disabled" selected="selected">국적</option>
+                                    <option value="1">내국인</option>
+                                    <option value="2">외국인</option>
+                                </select>
+                            </div>
+                            <div class="input-error-date hidden">
 
                             </div>
-                            <div class="input-error hidden">특수문자를 사용할 수 없습니다.</div>
                         </fieldset>
 
                     </form>
@@ -69,19 +117,23 @@
         $("input").on("blur", function () {
             if ($(this).val() == "") {
                 $(this).parent(".input-container").removeClass("focus");
+                $(this).parent(".input-container").next(".input-error").addClass("hidden");
+            } else if (!($(this).val() == "")) {
+                $(this).parent(".input-container").next(".input-error").addClass("hidden");
             }
         });
 
-        $(".name-input").bind("keypress", function (e) {
-            var keyCode = e.which ? e.which : e.keyCode
-
-            if (!(keyCode >= 48 && keyCode <= 57)) {
-                $(this).children().removeClass("hidden");
-                return false;
+        $(".name-input").keyup(function () {
+            var expectStr = /^[A-Za-zㄱ-힣\s]+$/;
+            var result = $(this).val();
+            if (expectStr.test(result)) {
+                $(this).parent(".input-container").next(".input-error").addClass("hidden");
             } else {
-                $(this).addClass("hidden");
+                $(this).parent(".input-container").next(".input-error").removeClass("hidden");
+                $(this).val(result.replace(/[^(ㄱ-힣a-zA-Z)]/gi, ''));
             }
         });
+
     </script>
 </body >
 </html >
