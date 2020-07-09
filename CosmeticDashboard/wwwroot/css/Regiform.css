@@ -110,7 +110,7 @@ main {
 .Regiform-main-inner .Regiform-main-inner-contents {
     width: 700px;
     min-height: 400px;
-    margin: auto;
+    margin: 30px 600px;
     padding: 60px;
     border-radius: 10px;
     background: #fff;
@@ -300,4 +300,51 @@ fieldset {
 
 .hidden {
     display:none;
+}
+
+.items-collection {
+    margin: 20px 0 0 0;
+}
+
+    .items-collection label.btn-default.active {
+        background-color: #007ba7;
+        color: #FFF;
+    }
+
+    .items-collection label.btn-default {
+        width: 90%;
+        border: 1px solid #305891;
+        margin: 5px;
+        border-radius: 17px;
+        color: #305891;
+    }
+
+    .items-collection label .itemcontent {
+        width: 100%;
+    }
+
+    .items-collection .btn-group {
+        width: 90%
+    }
+
+.input-container-phone{
+    display: block;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+.input-container-authen {
+    display: block;
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+.authentication {
+    display: none;
+}
+
+.show{
+    display:block;
 }
