@@ -10,15 +10,29 @@ namespace CosmeticDashboard.Controllers
     public class DashboardController : Controller
     {
         // GET: DashboardController
-        public ActionResult Index()
+        
+        [HttpGet]
+        
+        public ActionResult Korean()
         {
-            return View();
+            return PartialView("KoreanPeninsularDashboard");
         }
 
-        public ActionResult MainPage()
+        public ActionResult European()
         {
-            return View();
+            return PartialView("EuropeanContinentalDashboard");
         }
+
+        public ActionResult NorthernAmerica()
+        {
+            return PartialView("NorthernAmericaContinentalDashboard");
+        }
+        [Route("/GetKoreanDashboard")]
+        public ActionResult Asian()
+        {
+            return PartialView("AsianContinentalDashboard");
+        }
+
 
         // GET: DashboardController/Details/5
         public ActionResult Details(int id)

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -44,6 +45,13 @@ namespace CosmeticDashboard
             services.AddPaging();
 
              services.AddControllersWithViews();
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/Home/Index", "");
+            });
+            //services.AddRazorPages()
+            //.WithRazorPagesRoot("/Dashboard");
+            
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 

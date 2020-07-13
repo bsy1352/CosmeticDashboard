@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Dashboard\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="다운로드\swiper.min.js.다운로드" />
   </ItemGroup>
 

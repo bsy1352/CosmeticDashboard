@@ -34,9 +34,7 @@
     <!-- jQuery UI 1.11.4 -->
     <script src="~/theme/plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
+    <script>$.widget.bridge('uibutton', $.ui.button)</script>
     <!-- Bootstrap 4 -->
     <script src="~/theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- ChartJS -->
@@ -63,6 +61,7 @@
     <script src="~/theme/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/theme/dist/js/demo.js"></script>
+    
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -215,7 +214,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                             with font-awesome or any other icon font library -->
+                        with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -226,25 +225,25 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a asp-action="" asp-controller="" class="nav-link active">
+                                    <a asp-action="Korean" asp-controller="Dashboard" class="nav-link Dashboards active">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>대한민국 현황</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-action="" asp-controller="" class="nav-link">
+                                    <a asp-action="Asian" asp-controller="Dashboard" class="nav-link Dashboards">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>아시아 현황</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-action="" asp-controller="" class="nav-link">
+                                    <a asp-action="European" asp-controller="Dashboard" class="nav-link Dashboards">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>유럽현황</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a asp-action="" asp-controller="" class="nav-link">
+                                    <a asp-action="NorthernAmerica" asp-controller="Dashboard" class="nav-link Dashboards">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>북아메리카 현황</p>
                                     </a>
@@ -773,8 +772,11 @@
             </div>
             <!-- /.content-header -->
             <!-- Main content -->
-            <section class="content">
-                @RenderBody()
+            <section class="content renderbody">
+                
+                    @RenderBody()
+                
+                
                 @*@{ await Html.RenderPartialAsync("MainPage"); }*@
             </section>
             <!-- /.content -->
@@ -797,7 +799,15 @@
     <!-- ./wrapper -->
     <!-- jQuery -->
 
-    
+    <script type="text/javascript">
+        $(".Dashboards").on("click", function (e) {
+
+            $(".Dashboards").removeClass("active");
+            $(this).addClass("active");
+            return false;
+
+        });
+    </script>
 </body>
 </html>
 

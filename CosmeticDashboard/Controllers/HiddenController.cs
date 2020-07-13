@@ -64,7 +64,7 @@ namespace CosmeticDashboard.Controllers
                     HttpContext.Session.SetString("USER_LOGIN_ID", user.UserId);
                     HttpContext.Session.SetString("USER_LOGIN_NAME", user.UserName);
                     //로그인에 성공했을 때
-                    return RedirectToAction("Index", "Dashboard");
+                    return RedirectToAction("Korean", "Dashboard");
 
                 }
                 ModelState.Clear();
