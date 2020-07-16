@@ -1,0 +1,26 @@
+﻿*{
+    font-family: NanumSquareRound;
+}
+
+[class*=sidebar-dark-] {
+    background-color: #ededed;
+}
+
+.sidebar-dark-primary .brand-link {
+    border-bottom: 3px solid #d3d3d3;
+    color: rgba(255,255,255,.8);
+}
+
+.sidebar-dark-primary .user-panel {
+    border-bottom: none;
+    height: 70px;
+}
+
+.brand-link .brand-image{
+    float:none;
+    margin-top:5px;
+}
+
+[class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-treeview{
+    background-color: #d3d3d3;
+}
