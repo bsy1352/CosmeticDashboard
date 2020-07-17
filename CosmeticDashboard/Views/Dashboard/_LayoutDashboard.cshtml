@@ -214,11 +214,50 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link active">
+                        <li class="nav-header">통합 대시보드</li>
+                        <li class="nav-item">
+                            <a asp-action="Korean" asp-controller="Dashboard" class="nav-link">
+                                <i class="nav-icon fa fa-industry"></i>
+                                <p>
+                                    국내
+                                    <span class="badge badge-info right">2</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-action="Asian" asp-controller="Dashboard" class="nav-link">
+                                <i class="nav-icon fa fa-industry"></i>
+                                <p>
+                                    아시아
+                                    <span class="badge badge-info right">2</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-action="European" asp-controller="Dashboard" class="nav-link">
+                                <i class="nav-icon fa fa-industry"></i>
+                                <p>
+                                    유럽
+                                    <span class="badge badge-info right">2</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-action="American" asp-controller="Dashboard" class="nav-link">
+                                <i class="nav-icon fa fa-industry"></i>
+                                <p>
+                                    아메리카
+                                    <span class="badge badge-info right">2</span>
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header">구성</li>
+                        <li class="nav-item has-treeview">
+
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    대시보드
+                                    국내 현황
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -226,34 +265,29 @@
                                 <li class="nav-item">
                                     <a asp-action="Korean" asp-controller="Dashboard" class="nav-link Dashboards active">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>대한민국 현황</p>
+                                        <p>국내 출고 장비</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a asp-action="Asian" asp-controller="Dashboard" class="nav-link Dashboards">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>아시아 현황</p>
+                                        <p>관리자 설정</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a asp-action="European" asp-controller="Dashboard" class="nav-link Dashboards">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>유럽현황</p>
+                                        <p>장비 설정</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a asp-action="NorthernAmerica" asp-controller="Dashboard" class="nav-link Dashboards">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>북아메리카 현황</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    대시보드
+                                    아시아 현황
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -261,34 +295,29 @@
                                 <li class="nav-item">
                                     <a asp-action="Korean" asp-controller="Dashboard" class="nav-link Dashboards ">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>대한민국 현황</p>
+                                        <p>해외 수출 장비</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a asp-action="Asian" asp-controller="Dashboard" class="nav-link Dashboards">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>아시아 현황</p>
+                                        <p>관리자 설정</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a asp-action="European" asp-controller="Dashboard" class="nav-link Dashboards">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>유럽현황</p>
+                                        <p>장비 관리</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a asp-action="NorthernAmerica" asp-controller="Dashboard" class="nav-link Dashboards">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>북아메리카 현황</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link ">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    대시보드
+                                    유럽 현황
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -296,34 +325,29 @@
                                 <li class="nav-item">
                                     <a asp-action="Korean" asp-controller="Dashboard" class="nav-link Dashboards ">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>대한민국 현황</p>
+                                        <p>해외 수출 장비</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a asp-action="Asian" asp-controller="Dashboard" class="nav-link Dashboards">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>아시아 현황</p>
+                                        <p>관리자 설정</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a asp-action="European" asp-controller="Dashboard" class="nav-link Dashboards">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>유럽현황</p>
+                                        <p>장비 관리</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a asp-action="NorthernAmerica" asp-controller="Dashboard" class="nav-link Dashboards">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>북아메리카 현황</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
                         <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link ">
+                            <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    대시보드
+                                    아메리카 현황
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -331,39 +355,26 @@
                                 <li class="nav-item">
                                     <a asp-action="Korean" asp-controller="Dashboard" class="nav-link Dashboards ">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>대한민국 현황</p>
+                                        <p>해외 수출 장비</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a asp-action="Asian" asp-controller="Dashboard" class="nav-link Dashboards">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>아시아 현황</p>
+                                        <p>관리자 설정</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a asp-action="European" asp-controller="Dashboard" class="nav-link Dashboards">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>유럽현황</p>
+                                        <p>장비 관리</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a asp-action="NorthernAmerica" asp-controller="Dashboard" class="nav-link Dashboards">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>북아메리카 현황</p>
-                                    </a>
-                                </li>
+
                             </ul>
                         </li>
-                        <li class="nav-header">EXAMPLES</li>
-                        <li class="nav-item">
-                            <a href="pages/calendar.html" class="nav-link">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>
-                                    Calendar
-                                    <span class="badge badge-info right">2</span>
-                                </p>
-                            </a>
-                        </li>
+
+
                         <li class="nav-item">
                             <a href="pages/gallery.html" class="nav-link">
                                 <i class="nav-icon far fa-image"></i>

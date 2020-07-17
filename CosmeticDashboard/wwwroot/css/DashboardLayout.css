@@ -7,12 +7,12 @@
 }
 
 .sidebar-dark-primary .brand-link {
-    border-bottom: 3px solid #d3d3d3;
+    border-bottom: none;
     color: rgba(255,255,255,.8);
 }
 
 .sidebar-dark-primary .user-panel {
-    border-bottom: none;
+    border-bottom: 3px solid #d3d3d3;
     height: 70px;
 }
 

@@ -10,7 +10,7 @@
     <title>@ViewData["Title"] - Log In</title>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="~/css/LoginStyleSheet.css" />
+    <link href="~/css/LoginStyleSheet.css" rel="stylesheet"  />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 </head>
 <body>
@@ -18,7 +18,9 @@
 
     <div class="MainDiv">
         <form method="post" asp-action="LoginPage" asp-controller="Hidden" class="login-form">
-
+            <div class="logoDiv">
+                <img src="~/Logo/다보정밀 ci.png" />
+            </div>
             <h1>로그인</h1>
             @if (TempData["LoginFailure"] != null)
             {
