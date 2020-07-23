@@ -64,7 +64,7 @@ $(function () {
   }
   // World map by jvectormap
   $('#world-map').vectorMap({
-    map              : 'kr_merc',
+      map: 'en',
     backgroundColor  : 'transparent',
     regionStyle      : {
       initial: {

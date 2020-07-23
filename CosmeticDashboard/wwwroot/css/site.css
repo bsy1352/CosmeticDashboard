@@ -1,5 +1,6 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -230,7 +231,7 @@ header {
         left: 0;
         right: 0;
         top: 0;
-        z-index: 9998;
+        z-index: 999;
         min-width: 100%;
         background-color: rgba(255, 255, 255, 0.97);
         -webkit-transition: top .4s ease-in-out;
@@ -282,7 +283,7 @@ header {
             height: 100%;
         }
 
-nav {
+.main_nav {
     display: inline-block;
 }
 
@@ -486,8 +487,8 @@ nav {
 
 .header_util {
     float: right;
-    width: 144px;
-    margin: 29px 25px 0 0;
+    width: 250px;
+    margin: 19px 25px 0 0;
     font-size: 0;
 }
 
@@ -751,3 +752,65 @@ footer {
     overflow: hidden;
 }
 
+.header_util a .Dashboard_Link {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #212660;
+    border-radius: 5px;
+    color: #212660;
+    font-size: 15px;
+    
+}
+    .header_util a .Dashboard_Link p{
+        margin-top: 9px;
+        font-family:NanumSquareRound;
+        font-weight:900;
+    }
+    .header_util a .Dashboard_Link {
+        position: relative;
+    }
+
+    .header_util a .Dashboard_Link:hover {
+        background: #212660;
+        color: white;
+    }
+
+* {
+    font-family: NanumSquareRound;
+}
+
+[class*=sidebar-dark-] {
+    background-color: #ededed;
+}
+
+.sidebar-dark-primary .brand-link {
+    border-bottom: none;
+    color: rgba(255,255,255,.8);
+}
+
+.sidebar-dark-primary .user-panel {
+    border-bottom: 3px solid #d3d3d3;
+    height: 70px;
+}
+
+.brand-link .brand-image {
+    float: none;
+    margin-top: 5px;
+}
+
+[class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-treeview {
+    background-color: #d3d3d3;
+}
+
+.layout-fixed header .header_wrap_mobile .main-sidebar .sidebar {
+    height: calc(97vh - (3.5rem + 1px));
+}
+
+#sidebar{
+    font-size:20px;
+    font-family:NanumSquare_ac;
+    font-weight:700;
+}

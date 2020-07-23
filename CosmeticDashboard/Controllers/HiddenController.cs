@@ -29,10 +29,9 @@ namespace CosmeticDashboard.Controllers
         /// <returns></returns>
         
         [HttpGet]
-        public IActionResult LoginPage()
+        public IActionResult Login()
         {
-
-            return View();
+            return View("LoginPage");
         }
 
         
@@ -64,7 +63,7 @@ namespace CosmeticDashboard.Controllers
                     HttpContext.Session.SetString("USER_LOGIN_ID", user.UserId);
                     HttpContext.Session.SetString("USER_LOGIN_NAME", user.UserName);
                     //로그인에 성공했을 때
-                    return RedirectToAction("Korean", "Dashboard");
+                    return RedirectToAction("Index", "Dashboard");
 
                 }
                 ModelState.Clear();

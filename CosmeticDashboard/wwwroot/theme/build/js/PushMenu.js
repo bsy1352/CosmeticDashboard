@@ -164,7 +164,9 @@ const PushMenu = (($) => {
         this.collapse()
       })
 
+      
       $(Selector.WRAPPER).append(overlay)
+
     }
 
     // Static
@@ -191,7 +193,7 @@ const PushMenu = (($) => {
    * ====================================================
    */
 
-  $(document).on('click', Selector.TOGGLE_BUTTON, (event) => {
+    $(document).on('click', Selector.TOGGLE_BUTTON, (event) => {
     event.preventDefault()
 
     let button = event.currentTarget

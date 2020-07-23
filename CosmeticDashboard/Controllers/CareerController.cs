@@ -12,7 +12,7 @@ namespace CosmeticDashboard.Controllers
         // GET: CareerController
         public ActionResult Index()
         {
-            return View();
+            return View("Index1");
         }
 
         // GET: CareerController/Details/5

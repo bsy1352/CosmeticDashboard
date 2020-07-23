@@ -24,3 +24,77 @@
 [class*=sidebar-dark-] .nav-sidebar > .nav-item > .nav-treeview{
     background-color: #d3d3d3;
 }
+
+.layout-fixed .wrapper .sidebar {
+    height: calc(97vh - (3.5rem + 1px));
+}
+
+.language{
+    padding-top:9px;
+}
+
+.header_lang {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 41px 0 0;
+    font-size: 12px;
+}
+
+.header_lang a {
+    position: relative;
+    color: #333;
+}
+
+    .header_lang a[aria-selected="false"] {
+        opacity: 0.6;
+    }
+
+    .header_lang a:first-child {
+        margin: 0 21px 0 0;
+    }
+
+        .header_lang a:first-child:after {
+            content: '';
+            display: block;
+            position: absolute;
+            right: -12px;
+            top: 2px;
+            width: 1px;
+            height: 9px;
+            background-color: #333;
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+        }
+
+    .header_lang a:nth-child(2) {
+        margin: 0 21px 0 0;
+    }
+
+        .header_lang a:nth-child(2):after {
+            content: '';
+            display: block;
+            position: absolute;
+            right: -12px;
+            top: 2px;
+            width: 1px;
+            height: 9px;
+            background-color: #333;
+            opacity: 0.6;
+            filter: alpha(opacity=60);
+        }
+
+@media(max-width: 574px) {
+    .settings {
+        display:block;
+    }
+
+    .language{
+        display:none;
+    }
+}
+
+@media(min-width: 574px) {
+    .settings {
+        display:none;
+    }
+}

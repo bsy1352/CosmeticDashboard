@@ -37,6 +37,39 @@
     <Folder Include="wwwroot\Video\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\theme\plugins\jqvmap\jquery.vmap.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\jquery.vmap.min.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\continents\jquery.vmap.africa.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\continents\jquery.vmap.asia.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\continents\jquery.vmap.australia.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\continents\jquery.vmap.europe.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\continents\jquery.vmap.north-america.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\continents\jquery.vmap.south-america.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.algeria.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.argentina.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.brazil.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.canada.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.croatia.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.europe.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.france.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.germany.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.greece.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.indonesia.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.iran.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.iraq.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.new_regions_france.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.russia.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.serbia.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.tunisia.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.turkey.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.ukraine.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.usa.counties.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.usa.districts.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.usa.js" />
+    <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.world.js" />
+  </ItemGroup>
+
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>

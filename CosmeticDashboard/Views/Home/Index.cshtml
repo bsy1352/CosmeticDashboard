@@ -7,6 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CosmeticDashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     @*<script type="text/javascript">
             $(document).keydown(function (event) {
@@ -17,11 +18,14 @@
                 }
             });
         </script>*@
-    <script language="javascript" type="text/javascript" src="~/js/Registration.js"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/theme/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/theme/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <script language="javascript" type="text/javascript" src="~/js/Registration.js"></script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/SlideSidebar.css" />
     <script src="~/js/AutoPlayVideoScroll.js"></script>
     <script src="~/js/swiper.min.js"></script>
     <link rel="stylesheet" href="~/css/MainHome.css" />
@@ -29,29 +33,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <script src="~/theme/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/theme/dist/js/adminlte.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/theme/dist/js/pages/dashboard.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/theme/dist/js/demo.js"></script>
 
 </head>
-<body>
-    <div class="d-block d-md-none d-lg-none slidediv" id="slidediv" style="z-index: 999999; position:absolute; margin-left:5px; margin-top:3px">
+<body class="sidebar-mini layout-fixed">
+    @*<div style="z-index: 999999; position:absolute; margin-left:5px; margin-top:3px">
         <input type="checkbox" id="menuicon">
         <label for="menuicon">
             <span></span>
             <span></span>
         </label>
-        <script>
-            $('.feat-btn').click(function () {
-                $('.feat-show').toggleClass("show");
-                $('.first').toggleClass("rotate");
-            });
-            $('.serv-btn').click(function () {
-                $('.serv-show').toggleClass("show");
-                $('.second').toggleClass("rotate");
-            });
-            $('.news-btn').click(function () {
-                $('.news-show').toggleClass("show");
-                $('.third').toggleClass("rotate");
-            });
-        </script>
         <div class="sidebar">
             <ul>
                 <li>
@@ -83,7 +80,7 @@
                 </li>
             </ul>
         </div>
-    </div>
+    </div>*@
     <div id="wrap">
         <script type="text/javascript">
             $(document).ready(function () {
@@ -139,17 +136,89 @@
 
         </script>
         <header>
-            <div class="header_wrap_mobile d-block d-sm-none d-md-none">
+            <aside class="main-sidebar sidebar-dark-primary elevation-3 d-block d-sm-none d-md-none">
+                <!-- Brand Logo -->
+                <a href="index3.html" class="brand-link">
+                    <p style="text-align:center">
+                        <img src="/Logo/granco 로고 png.png" alt="AdminLTE Logo" class="brand-image center"
+                             style="opacity: 1">
+                    </p>
+                </a>
 
+                <!-- Sidebar -->
+                <div class="sidebar">
+                   
+                    <!-- Sidebar Menu -->
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" id="sidebar" data-widget="treeview" role="menu" data-accordion="false">
+                            <!-- Add icons to the links using the .nav-icon class
+    with font-awesome or any other icon font library -->
+                            <li class="nav-header">MENU</li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fa fa-industry"></i>
+                                    <p>
+                                        GRANCO
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fa fa-industry"></i>
+                                    <p>
+                                        SOLUTIONS
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fa fa-industry"></i>
+                                    <p>
+                                        NEWS
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fa fa-industry"></i>
+                                    <p>
+                                        CAREER
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-header">CONSOLE</li>
+                            <li class="nav-item">
+                                <a asp-action="Login" asp-controller="Hidden" class="nav-link">
+                                    <i class="nav-icon fa fa-industry"></i>
+                                    <p>
+                                        통합 대시보드
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+                </div>
+                <!-- /.sidebar -->
+            </aside>
+            <div class="header_wrap_mobile d-block d-sm-none d-md-none wrapper" style="font-family:NanumSquare;">
+                <a data-widget="pushmenu" href="#" role="button">
+                    <div style="float:left; padding-left:15px; padding-top:2px; font-size:1.5em; color:black">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </a>
                 <h1 class="header_logo_mobile">
                     <span class="blind">GRANCO</span>
                 </h1>
+
+
             </div>
+
             <div class="header_wrap d-none d-sm-block  d-md-block">
                 <h1 class="header_logo">
                     <a asp-area="" asp-action="Index" asp-controller="Home"><span class="blind">GRANCO</span></a>
                 </h1>
-                <nav>
+                <nav class="main_nav">
                     <ul class="gnb_menu" role="menu">
                         <li class="gnb_menu_list " role="menuitem" aria-haspopup="true">
                             <a asp-area="" asp-action="Index" asp-controller="Home" aria-expanded="false" class="gnb_menu_item">GRANCO</a>
@@ -246,24 +315,31 @@
                     </ul>
                 </nav>
                 <div class="header_util">
-                    @*<div class="header_lang" role="listbox">
+                    <div class="header_lang" role="listbox">
                         <a role="option" aria-selected="true">KOR</a>
                         <a role="option" aria-selected="false">ENG</a>
-                    </div>*@
-                    <!-- .btn_sitemap 클릭 시, aria-expanded="true" // header에 active클래스 추가 -->
-                    <div class="sitemap_box">
-                        <button type="button" class="btn_sitemap" aria-expanded="false">
-                            <span class="blind">사이트맵 열기/닫기</span>
-                            <span class="btn_line"></span>
-                            <span class="btn_line"></span>
-                            <span class="btn_line"></span>
-                        </button>
                     </div>
+                    <!-- .btn_sitemap 클릭 시, aria-expanded="true" // header에 active클래스 추가 -->
+
+                    <a asp-action="Login" asp-controller="Hidden">
+                        <div class="Dashboard_Link">
+                            <p>통합 대시 보드</p>
+                        </div>
+                    </a>
+
+                    @*<div class="sitemap_box">
+                    <button type="button" class="btn_sitemap" aria-expanded="false">
+                        <span class="blind">사이트맵 열기/닫기</span>
+                        <span class="btn_line"></span>
+                        <span class="btn_line"></span>
+                        <span class="btn_line"></span>
+                    </button>
+                </div>*@
                 </div>
             </div>
 
 
-            </header>
+        </header>
             <!-- sitemap -->
             <div class="sitemap">
                 <ul class="sitemap_container">
