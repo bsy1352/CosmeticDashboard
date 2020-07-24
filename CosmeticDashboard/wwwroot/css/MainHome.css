@@ -93,6 +93,7 @@
         width: 100%;
         padding: 10px 0;
         background: #f1f1f1;
+        height: 400px;
     }
 
     .inner-width {
@@ -212,6 +213,16 @@
         border: 1px solid transparent;
         width: 1500px;
         margin: 0 auto;
+    }
+
+    @media(max-width:574px){
+        .video-wrapper {
+            position: relative;
+            border: 1px solid transparent;
+            width: 1500px;
+            margin: 0 auto;
+            height:auto;
+        }
     }
 
         .video-wrapper .tracker {

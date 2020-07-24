@@ -43,44 +43,6 @@
 
 </head>
 <body class="sidebar-mini layout-fixed">
-    @*<div style="z-index: 999999; position:absolute; margin-left:5px; margin-top:3px">
-        <input type="checkbox" id="menuicon">
-        <label for="menuicon">
-            <span></span>
-            <span></span>
-        </label>
-        <div class="sidebar">
-            <ul>
-                <li>
-                    <a href="#" class="feat-btn"><i class="fas fa-home"></i>GRANCO<span class="fas fa-caret-down first"></span></a>
-                    <ul class="feat-show">
-                        <li>회사 소개</li>
-                        <li>Contact</li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="serv-btn"><i class="fas fa-lightbulb"></i>SOLUTIONS<span class="fas fa-caret-down second"></span></a>
-                    <ul class="serv-show">
-                        <li>SMART FACTORY</li>
-                        <li>MES</li>
-                        <li>IT SOLUTION</li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#" class="news-btn"><i class="fas fa-newspaper"></i>NEWS<span class="fas fa-caret-down third"></span></a>
-                    <ul class="news-show">
-                        <li>그란코 소식</li>
-                        <li>이 달의 행사</li>
-                        <li>미디어</li>
-                    </ul>
-                </li>
-                <li>
-                    <a asp-action="Index" asp-controller="Career"><i class="fas fa-handshake"></i>CAREER</a>
-
-                </li>
-            </ul>
-        </div>
-    </div>*@
     <div id="wrap">
         <script type="text/javascript">
             $(document).ready(function () {
@@ -136,9 +98,9 @@
 
         </script>
         <header>
-            <aside class="main-sidebar sidebar-dark-primary elevation-3 d-block d-sm-none d-md-none">
+            <aside class="main-sidebar sidebar-dark-primary elevation-5 d-block d-sm-none d-md-none">
                 <!-- Brand Logo -->
-                <a href="index3.html" class="brand-link">
+                <a href="#" class="brand-link">
                     <p style="text-align:center">
                         <img src="/Logo/granco 로고 png.png" alt="AdminLTE Logo" class="brand-image center"
                              style="opacity: 1">
@@ -147,53 +109,113 @@
 
                 <!-- Sidebar -->
                 <div class="sidebar">
-                   
                     <!-- Sidebar Menu -->
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" id="sidebar" data-widget="treeview" role="menu" data-accordion="false">
                             <!-- Add icons to the links using the .nav-icon class
     with font-awesome or any other icon font library -->
                             <li class="nav-header">MENU</li>
-                            <li class="nav-item">
+                            <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon fa fa-industry"></i>
+                                    <img src="~/Icons/granco_logo.png" style="width:32px; height:auto; margin-right:7px" />
                                     <p>
                                         GRANCO
                                     </p>
+                                    <i class="right fas fa-angle-left"></i>
                                 </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>회사소개</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pages/mailbox/compose.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Contact</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon fa fa-industry"></i>
+                                    <img src="~/Icons/솔루션.png" style="width:28px; height:auto; margin-right:10px" />
                                     <p>
                                         SOLUTIONS
                                     </p>
+                                    <i class="right fas fa-angle-left"></i>
                                 </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="pages/mailbox/compose.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Smart Factory</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>IT Solutions</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon fa fa-industry"></i>
+                                    <img src="~/Icons/NEWS.png" style="width:23px; height:auto;margin-left:3px; margin-right:13px" />
                                     <p>
                                         NEWS
                                     </p>
+                                    <i class="right fas fa-angle-left"></i>
                                 </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="pages/mailbox/mailbox.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>월간 그란코</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pages/mailbox/compose.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>미디어</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="pages/mailbox/compose.html" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>홍보</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon fa fa-industry"></i>
+                                    <img src="~/Icons/캐리어.png" style="width:28px; height:auto; margin-right:10px" />
                                     <p>
                                         CAREER
                                     </p>
                                 </a>
                             </li>
                             <li class="nav-header">CONSOLE</li>
-                            <li class="nav-item">
-                                <a asp-action="Login" asp-controller="Hidden" class="nav-link">
-                                    <i class="nav-icon fa fa-industry"></i>
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <img src="~/Icons/대시보드.png" style="width:23px; height:auto;margin-left:3px; margin-right:13px" />
                                     <p>
                                         통합 대시보드
                                     </p>
+                                    <i class="right fas fa-angle-left"></i>
                                 </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a asp-action="Login" asp-controller="Hidden" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>다보정밀 데모</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
                     </nav>
@@ -210,8 +232,6 @@
                 <h1 class="header_logo_mobile">
                     <span class="blind">GRANCO</span>
                 </h1>
-
-
             </div>
 
             <div class="header_wrap d-none d-sm-block  d-md-block">
@@ -741,7 +761,7 @@
                     <strong class="footer_logo"><span class="blind">Granco</span></strong>
                     <ul class="footer_menu">
                         <li>
-                            <a href="https://www.navercorp.com/policy/person" class="footer_menu_item" style="font-weight: bold;">개인정보 처리방침</a>
+                            <a href="#" class="footer_menu_item" style="font-weight: bold;">개인정보 처리방침</a>
                         </li>
                     </ul>
                     <div class="affiliate_box" aria-haspopup="true">

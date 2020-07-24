@@ -34,10 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Video\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\theme\plugins\jqvmap\jquery.vmap.js" />
     <None Include="wwwroot\theme\plugins\jqvmap\jquery.vmap.min.js" />
     <None Include="wwwroot\theme\plugins\jqvmap\maps\continents\jquery.vmap.africa.js" />
@@ -68,6 +64,10 @@
     <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.usa.districts.js" />
     <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.usa.js" />
     <None Include="wwwroot\theme\plugins\jqvmap\maps\jquery.vmap.world.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Video\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>

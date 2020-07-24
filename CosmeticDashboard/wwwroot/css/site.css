@@ -212,7 +212,8 @@ header {
 @media (max-width: 574px){
 
     .container {
-        padding: 40px 0 160px;
+        margin-top:40px;
+        padding: 0 0;
         max-width: 100%;
     }
 
@@ -576,10 +577,11 @@ header {
 }
 
 footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     background-color: #f8f9fa;
+    height:50px;
 }
 
 .footer_wrap {
@@ -588,6 +590,15 @@ footer {
     margin: 0 auto;
     padding: 74px 0 70px;
     text-align: center;
+}
+
+@media(max-width:574px){
+    .footer_wrap {
+        position: relative;
+        max-width: 1600px;
+        padding:0;
+        text-align: center;
+    }
 }
 
     .footer_wrap:after {
@@ -674,6 +685,13 @@ footer {
             background-position: -222px -26px;
         }
 
+@media(max-width:574px) {
+    .affiliate_box .btn_affiliate{
+        position: relative;
+        padding:0;
+    }
+}
+
 .btn_more.type2[aria-expanded="true"] ~ .article_container {
     height: auto;
 }
@@ -737,7 +755,7 @@ footer {
 
 @media only screen and (max-width: 1200px) {
     .footer_wrap .footer_copy {
-        margin-left: 423px;
+        display:none;
     }
 }
 
