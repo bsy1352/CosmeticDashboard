@@ -6,6 +6,10 @@
     <title>다보정밀 데모</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta HTTP-EQUIV="Expires" CONTENT="Mon, 06 Jan 1990 00:00:01 GMT">
+    <meta HTTP-EQUIV="Expires" CONTENT="-1">
+    <meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="~/theme/plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -57,7 +61,7 @@
     <script src="~/theme/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/theme/dist/js/demo.js"></script>
-    <link href="~/css/DashboardLayout.css" rel="stylesheet"/>
+    <link href="~/css/DashboardLayout.css" rel="stylesheet" />
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -189,7 +193,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-3">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a asp-action="Index" asp-controller="Dashboard" class="brand-link">
                 <p style="text-align:center"><img src="/Logo/다보정밀 ci.png" alt="AdminLTE Logo" class="brand-image center"
                      style="opacity: 1"></p>
             </a>
@@ -204,6 +208,11 @@
                     <div class="info">
                         <a href="#" class="d-block" style="font-size:25px; color:black; margin-top: 3px;">관리자</a>
                     </div>
+                    <a asp-action="Logout" asp-controller="Hidden">
+                        <div class="logout">
+                            <p>Log Out</p>
+                        </div>
+                    </a>
                 </div>
 
                 <!-- Sidebar Menu -->
@@ -213,7 +222,7 @@
     with font-awesome or any other icon font library -->
                         <li class="nav-header">통합 대시보드</li>
                         <li class="nav-item">
-                            <a href="#" data-url="@Url.Action("Korea_Local","Dashboard")" class="nav-link active buttons">
+                            <a data-url="@Url.Action("Korea_Local","Dashboard")" class="nav-link buttons">
                                 <i class="nav-icon fa fa-industry"></i>
                                 <p>
                                     국내
@@ -222,7 +231,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" data-url="@Url.Action("Asia","Dashboard")" class="nav-link buttons">
+                            <a data-url="@Url.Action("Asia","Dashboard")" class="nav-link buttons">
                                 <i class="nav-icon fa fa-industry"></i>
                                 <p>
                                     아시아
@@ -231,7 +240,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" data-url="@Url.Action("Europe","Dashboard")" class="nav-link buttons">
+                            <a data-url="@Url.Action("Europe","Dashboard")" class="nav-link buttons">
                                 <i class="nav-icon fa fa-industry"></i>
                                 <p>
                                     유럽
@@ -240,7 +249,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" data-url="@Url.Action("America","Dashboard")" class="nav-link buttons">
+                            <a data-url="@Url.Action("America","Dashboard")" class="nav-link buttons">
                                 <i class="nav-icon fa fa-industry"></i>
                                 <p>
                                     아메리카
@@ -532,8 +541,8 @@
         <div class="content-wrapper">
             
             <!-- Main content -->
-            <div class="content renderbody">
-                @Html.RenderPartialAsync("Korea_Local");
+            <div class="content renderbody" style="padding-top:30px;">
+                @{await Html.RenderPartialAsync("Index");}
             </div>
             <!-- /.content -->
         </div>
@@ -557,11 +566,17 @@
 
     <script type="text/javascript">
     $(document).ready(function () {
-        $(".buttons").on('click',function () {
+        $(".buttons").on('click', function () {
+
             var thisurl = $(this).attr("data-url");
             $('.renderbody').load(thisurl);
         });
     });
+
+        $('.buttons').on('click', function () {
+            $('.buttons').removeClass('active');
+            $(this).addClass('active');
+        });
         //$(document).delegate(".buttons","click", function (event) {
         //
         //    $.get(thisurl, function (data) {

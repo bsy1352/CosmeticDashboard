@@ -27,11 +27,22 @@ namespace CosmeticDashboard.Controllers
         /// 로그인
         /// </summary>
         /// <returns></returns>
-        
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true, Duration = 0)]
         [HttpGet]
         public IActionResult Login()
         {
-            return View("LoginPage");
+            if(HttpContext.Session.GetInt32("USER_LOGIN_KEY") == null)
+            {
+                
+                return View("LoginPage");
+            }
+            else
+            {
+
+                return RedirectToAction("Index", "Dashboard");
+            }
+
+            
         }
 
         
@@ -60,8 +71,8 @@ namespace CosmeticDashboard.Controllers
 
                     // key 값과 value값을 필요로 한다
                     HttpContext.Session.SetInt32("USER_LOGIN_KEY", user.UserNo);
-                    HttpContext.Session.SetString("USER_LOGIN_ID", user.UserId);
-                    HttpContext.Session.SetString("USER_LOGIN_NAME", user.UserName);
+                    //HttpContext.Session.SetString("USER_LOGIN_ID", user.UserId);
+                    //HttpContext.Session.SetString("USER_LOGIN_NAME", user.UserName);
                     //로그인에 성공했을 때
                     return RedirectToAction("Index", "Dashboard");
 
@@ -100,10 +111,10 @@ namespace CosmeticDashboard.Controllers
 
         public async Task<IActionResult> Logout()
         {
-            HttpContext.Session.Remove("USER_LOGIN_KEY");
-            HttpContext.Session.Remove("USER_LOGIN_ID");
-            HttpContext.Session.Remove("USER_LOGIN_NAME"); // 해당 키값 세션만 클리어
-                                                          // HttpContext.Session.Clear(); //서버에 존재하는 모든 세션을 클리어 함
+            //HttpContext.Session.Remove("USER_LOGIN_KEY");
+            //HttpContext.Session.Remove("USER_LOGIN_ID");
+            //HttpContext.Session.Remove("USER_LOGIN_NAME"); // 해당 키값 세션만 클리어
+            HttpContext.Session.Clear(); //서버에 존재하는 모든 세션을 클리어 함
 
             return RedirectToAction("Index", "Home");
         }

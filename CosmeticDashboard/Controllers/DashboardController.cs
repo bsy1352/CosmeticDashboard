@@ -4,37 +4,57 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MySqlX.XDevAPI;
 
 namespace CosmeticDashboard.Controllers
 {
     public class DashboardController : Controller
     {
         // GET: DashboardController
-
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true, Duration = 0)]
+        [HttpGet]
         public ActionResult Index()
         {
-            return View("_LayoutDashboard");
+            if(HttpContext.Session.GetInt32("USER_LOGIN_KEY") != null)
+            {
+                
+                return View("_LayoutDashboard");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Hidden");
+            }
+            
         }
-
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true, Duration = 0)]
         [HttpGet]
         public ActionResult Korea_Local()
         {
             return PartialView("Korean");
+            
+            
+            
         }
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true, Duration = 0)]
         [HttpGet]
         public ActionResult Europe()
         {
             return PartialView();
+            
+            
         }
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true, Duration = 0)]
         [HttpGet]
         public ActionResult America()
         {
             return PartialView();
         }
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true, Duration = 0)]
         [HttpGet]
         public ActionResult Asia()
         {
             return PartialView();
+            
         }
 
 

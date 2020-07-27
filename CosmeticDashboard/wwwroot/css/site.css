@@ -787,9 +787,7 @@ footer {
         font-family:NanumSquareRound;
         font-weight:900;
     }
-    .header_util a .Dashboard_Link {
-        position: relative;
-    }
+    
 
     .header_util a .Dashboard_Link:hover {
         background: #212660;

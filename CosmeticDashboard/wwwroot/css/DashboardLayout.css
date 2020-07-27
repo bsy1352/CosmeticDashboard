@@ -98,3 +98,20 @@
         display:none;
     }
 }
+
+.logout {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 50px;
+    height: 40px;
+    border: none;
+    color: black;
+    font-size: 10px;
+}
+    .logout p {
+        margin-top: 30%;
+        margin-left:40%;
+        font-family: NanumSquareRound;
+        font-weight: 700;
+    }

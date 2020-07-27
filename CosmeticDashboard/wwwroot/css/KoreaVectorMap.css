@@ -1,0 +1,27 @@
+﻿.OUTLINE {
+    stroke-linejoin: round;
+    stroke: black;
+    stroke-width: 2;
+}
+
+#CD11 {
+    fill:white;
+}
+
+    #CD11:hover {
+        fill :#32a9e5
+    }
+
+
+
+.TEXT {
+    fill: #ffffff;
+    font-size: 16;
+    font-weight: bold;
+    text-anchor: middle;
+    alignment-baseline: middle;
+}
+
+.land:hover {
+    fill: #32a9e5;
+}

@@ -39,8 +39,16 @@ namespace CosmeticDashboard
             {
                 options.KnownProxies.Add(System.Net.IPAddress.Parse("13.124.105.141"));
             });
+
+            //[DNN] TempData[] 개체 사용
+            services.AddMemoryCache();
+
             //Session = 서비스에 등록함.
-            services.AddSession();
+            services.AddSession(options => 
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(2);
+            
+            });
 
             services.AddPaging();
 
