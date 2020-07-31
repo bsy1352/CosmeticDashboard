@@ -20,8 +20,10 @@
     font-weight: bold;
     text-anchor: middle;
     alignment-baseline: middle;
+    
 }
 
 .land:hover {
     fill: #32a9e5;
 }
+

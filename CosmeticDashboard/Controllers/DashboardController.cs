@@ -30,7 +30,7 @@ namespace CosmeticDashboard.Controllers
         [HttpGet]
         public ActionResult Korea_Local()
         {
-            return PartialView("Korean");
+            return PartialView("Factory");
             
             
             
