@@ -16,7 +16,7 @@
 
 .TEXT {
     fill: #ffffff;
-    font-size: 16;
+    font-size: 16px;
     font-weight: bold;
     text-anchor: middle;
     alignment-baseline: middle;
@@ -26,4 +26,22 @@
 .land:hover {
     fill: #32a9e5;
 }
+
+.g_size {
+    transform: scale(0.6);
+}    
+
+
+@media(max-width: 574px){
+    .Map{
+        height:700px;
+        
+
+    }
+
+    .g_size {
+        transform:scale(0.5);
+    }    
+}
+
 
