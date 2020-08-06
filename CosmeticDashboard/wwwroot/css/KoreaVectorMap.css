@@ -19,28 +19,36 @@
     font-size: 16px;
     font-weight: bold;
     text-anchor: middle;
-    alignment-baseline: middle;
-    
 }
+
+
 
 .land:hover {
     fill: #32a9e5;
 }
+.map_div {
+    margin-left: 120px;
+}
 
 .g_size {
     transform: scale(0.6);
+    
 }    
 
 
 @media(max-width: 574px){
     .Map{
         height:700px;
-        
 
+    }
+
+    .map_div {
+        margin-left: 30px;
     }
 
     .g_size {
         transform:scale(0.5);
+        
     }    
 }
 
