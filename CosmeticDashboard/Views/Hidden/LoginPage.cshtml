@@ -9,15 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Log In</title>
 
+    <link rel="stylesheet" href="~/theme/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
-    <link href="~/css/LoginStyleSheet.css" rel="stylesheet"  />
+    <link href="~/css/LoginStyleSheet.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
 </head>
 <body>
-    @*<div class="modal fade" id="myModal" role="dialog"></div>*@
-
+    <div class="homeBtndiv">
+        <a class="homeBtn" asp-controller="Home" asp-action="Index"><img src="~/Icons/home.png" style=" width: inherit"/></a>
+    </div>
     <div class="MainDiv">
         <form method="post" asp-action="LoginPage" asp-controller="Hidden" class="login-form">
+
             <div class="logoDiv">
                 <img src="~/Logo/다보정밀 ci.png" />
             </div>
@@ -43,7 +49,7 @@
             <input type="submit" class="logbtn" value="로그인" />
 
             <div class="bottom-text">
-                아직 계정이 없으신가요? <a asp-controller="Hidden" asp-action="Register">회원가입</a>
+                아직 계정이 없으신가요? <a asp-controller="Hidden" asp-action="Register" style="margin-left:10px;">계정요청</a>
             </div>
 
         </form>
