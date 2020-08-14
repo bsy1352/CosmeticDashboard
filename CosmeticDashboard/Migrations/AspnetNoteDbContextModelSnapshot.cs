@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CosmeticDashboard.Migrations
 {
-    [DbContext(typeof(AspnetNoteDbContext))]
+    [DbContext(typeof(AspnetDbContext))]
     partial class AspnetNoteDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -15,6 +15,38 @@ namespace CosmeticDashboard.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("CosmeticDashboard.Models.Factory", b =>
+                {
+                    b.Property<int>("FactoryCode")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("FactoryName")
+                        .HasColumnType("text");
+
+                    b.Property<string>("LocationCode")
+                        .HasColumnType("varchar(767)");
+
+                    b.HasKey("FactoryCode");
+
+                    b.HasIndex("LocationCode");
+
+                    b.ToTable("Factories");
+                });
+
+            modelBuilder.Entity("CosmeticDashboard.Models.KoreaLocation", b =>
+                {
+                    b.Property<string>("LocationCode")
+                        .HasColumnType("varchar(767)");
+
+                    b.Property<string>("LocationName")
+                        .HasColumnType("text");
+
+                    b.HasKey("LocationCode");
+
+                    b.ToTable("Locations");
+                });
 
             modelBuilder.Entity("CosmeticDashboard.Models.Note", b =>
                 {
@@ -68,6 +100,13 @@ namespace CosmeticDashboard.Migrations
                     b.HasKey("UserNo");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("CosmeticDashboard.Models.Factory", b =>
+                {
+                    b.HasOne("CosmeticDashboard.Models.KoreaLocation", "KoreaLocation")
+                        .WithMany()
+                        .HasForeignKey("LocationCode");
                 });
 
             modelBuilder.Entity("CosmeticDashboard.Models.Note", b =>

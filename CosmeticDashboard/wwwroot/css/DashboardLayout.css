@@ -153,3 +153,45 @@
     color: #666;
 }
 
+.modal_1 .pop-header {
+    width: 100%;
+    height: 8%;
+    background-color: dodgerblue;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.modal_1 .modal_children {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+    .modal_1 .modal_children .btn_group{
+        width:20%;
+        height:100%;
+        margin-top: 10px;
+        margin-left:20px;
+    }
+
+    .modal_1 .modal_children .btn_group .button {
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        margin-bottom: 5%;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+
+    .modal_1 .modal_children .btn_group .button1 {
+        background-color: white;
+        color: black;
+        border: 2px solid #008CBA;
+    }
+

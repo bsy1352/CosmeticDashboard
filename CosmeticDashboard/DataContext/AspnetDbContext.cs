@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace CosmeticDashboard.DataContext
 {
-    public class AspnetNoteDbContext : DbContext
+    public class AspnetDbContext : DbContext
     {
-        public AspnetNoteDbContext(DbContextOptions<AspnetNoteDbContext> options) : base(options)
+        
+
+        public AspnetDbContext(DbContextOptions<AspnetDbContext> options) : base(options)
         {
 
         }
@@ -18,6 +20,8 @@ namespace CosmeticDashboard.DataContext
 
         public DbSet<Note> Notes { get; set; }
 
-       
+        public DbSet<KoreaLocation> Locations { get; set; }
+
+        public DbSet<Factory> Factories { get; set; }
     }
 }

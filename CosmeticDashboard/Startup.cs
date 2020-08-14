@@ -17,6 +17,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Org.BouncyCastle.Utilities.Net;
 using ReflectionIT.Mvc.Paging;
+using Newtonsoft.Json.Serialization;
 
 namespace CosmeticDashboard
 {
@@ -33,7 +34,7 @@ namespace CosmeticDashboard
         [Obsolete]
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<AspnetNoteDbContext>(option => option.UseMySQL(Configuration.GetConnectionString("DefaultContext")));
+            services.AddDbContext<AspnetDbContext>(option => option.UseMySQL(Configuration.GetConnectionString("DefaultContext")));
 
             services.Configure<ForwardedHeadersOptions>(options => 
             {
@@ -49,7 +50,7 @@ namespace CosmeticDashboard
                 options.IdleTimeout = TimeSpan.FromMinutes(2);
             
             });
-
+            
             services.AddPaging();
 
              services.AddControllersWithViews();

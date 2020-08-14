@@ -17,9 +17,9 @@ namespace CosmeticDashboard.Controllers
 {
     public class HiddenController : Controller
     {
-        private readonly AspnetNoteDbContext _db;
+        private readonly AspnetDbContext _db;
 
-        public HiddenController(AspnetNoteDbContext db)
+        public HiddenController(AspnetDbContext db)
         {
             _db = db;
         }
@@ -125,21 +125,21 @@ namespace CosmeticDashboard.Controllers
             return PartialView();
         }
 
-        [HttpPost]
-        public async Task<IActionResult> isDuplicated([FromBody]Test user)
-        {
-            DupResult dr = new DupResult();
+        //[HttpPost]
+        //public async Task<IActionResult> isDuplicated([FromBody]Test user)
+        //{
+        //    DupResult dr = new DupResult();
             
-            var userID = await _db.Users
-                   .FirstOrDefaultAsync(u => u.UserId.Equals(user.ID));
-            if(userID != null)
-            {
-                dr.isDup = 1;
-                return Json(dr);
-            }
-            dr.isDup = 0;
-            return Json(dr);
-        }
+        //    var userID = await _db.Users
+        //           .FirstOrDefaultAsync(u => u.UserId.Equals(user.ID));
+        //    if(userID != null)
+        //    {
+        //        dr.isDup = 1;
+        //        return Json(dr);
+        //    }
+        //    dr.isDup = 0;
+        //    return Json(dr);
+        //}
 
        
     }

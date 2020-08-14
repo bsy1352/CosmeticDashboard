@@ -2,14 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CosmeticDashboard.DataContext;
+using CosmeticDashboard.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MySqlX.XDevAPI;
+using Newtonsoft.Json.Serialization;
 
 namespace CosmeticDashboard.Controllers
 {
     public class DashboardController : Controller
     {
+        private readonly AspnetDbContext _db;
+
+        public DashboardController(AspnetDbContext db)
+        {
+            _db = db;
+        }
+
+
         // GET: DashboardController
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true, Duration = 0)]
         [HttpGet]
@@ -26,11 +38,15 @@ namespace CosmeticDashboard.Controllers
             }
             
         }
+
+        public IEnumerable<Factory> Factories { get; set; }
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true, Duration = 0)]
         [HttpGet]
-        public ActionResult Korea_Local()
+        public async Task<IActionResult> Korea_LocalAsync()
         {
-            return PartialView("Korean");
+            Factories = await _db.Factories.ToListAsync();
+
+            return PartialView("Korean", Factories);
             
             
             
@@ -126,5 +142,7 @@ namespace CosmeticDashboard.Controllers
                 return View();
             }
         }
+
+        
     }
 }
