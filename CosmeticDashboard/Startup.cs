@@ -18,6 +18,7 @@ using Microsoft.Extensions.Logging;
 using Org.BouncyCastle.Utilities.Net;
 using ReflectionIT.Mvc.Paging;
 using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Http;
 
 namespace CosmeticDashboard
 {
@@ -38,8 +39,14 @@ namespace CosmeticDashboard
 
             services.Configure<ForwardedHeadersOptions>(options => 
             {
-                options.KnownProxies.Add(System.Net.IPAddress.Parse("13.124.105.141"));
+                options.KnownProxies.Add(System.Net.IPAddress.Parse("15.164.226.54"));
             });
+
+            //services.AddHttpsRedirection(options =>
+            //{
+            //    options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+            //    options.HttpsPort = 5000;
+            //});
 
             //[DNN] TempData[] 개체 사용
             services.AddMemoryCache();

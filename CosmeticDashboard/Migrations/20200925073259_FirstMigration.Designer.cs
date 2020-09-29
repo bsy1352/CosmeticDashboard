@@ -8,14 +8,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CosmeticDashboard.Migrations
 {
     [DbContext(typeof(AspnetDbContext))]
-    [Migration("20200812083041_AspnetDbContext")]
-    partial class AspnetDbContext
+    [Migration("20200925073259_FirstMigration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.5")
+                .HasAnnotation("ProductVersion", "3.1.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("CosmeticDashboard.Models.Factory", b =>
